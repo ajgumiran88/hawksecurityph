@@ -78,11 +78,7 @@ body.hawk-v2 a:focus-visible {
 }
 
 body.hawk-v2 #page-preloader {
-  background: var(--hawk-black);
-}
-
-body.hawk-v2 #page-preloader .circle {
-  border-color: var(--hawk-gold);
+  display: none !important;
 }
 
 /* ------------------------------------------------------------------ */
@@ -202,6 +198,7 @@ body.hawk-v2 .custom-header {
   background-size: cover;
   background-position: center;
   padding: 7rem 0 3.5rem;
+  margin-bottom: 2.5rem;
 }
 
 body.hawk-v2 .custom-header .vc_row-overlay {
@@ -243,14 +240,7 @@ body.hawk-v2.home .rev_slider_wrapper {
   position: relative;
 }
 
-body.hawk-v2.home sr7-bg::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(11, 11, 11, 0.42) 0%, rgba(11, 11, 11, 0.62) 100%);
-  pointer-events: none;
-  z-index: 2;
-}
+/* Slider paints on canvas. Do not cover it with a CSS overlay. */
 
 body.hawk-v2.home sr7-txt,
 body.hawk-v2.home sr7-content p.sr7-layer,
@@ -563,9 +553,7 @@ body.hawk-v2 .pix-contact-form {
 /* ------------------------------------------------------------------ */
 
 body.hawk-v2 .hawk-v2-reveal {
-  opacity: 0;
-  transform: translateY(16px);
-  animation: hawk-v2-fade-up 0.7s ease forwards;
+  animation: hawk-v2-fade-up 0.7s ease both;
 }
 
 @keyframes hawk-v2-fade-up {
