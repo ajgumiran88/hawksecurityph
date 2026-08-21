@@ -36,14 +36,14 @@ add_action(
 			'hawk-v2',
 			$uri . '/assets/css/hawk-v2.css',
 			array( 'style', 'pixtheme-main', 'hawk-v2-fonts' ),
-			'0.3.1'
+			'0.3.2'
 		);
 
 		wp_enqueue_script(
 			'hawk-v2',
 			$uri . '/assets/js/hawk-v2.js',
 			array(),
-			'0.3.1',
+			'0.3.2',
 			true
 		);
 

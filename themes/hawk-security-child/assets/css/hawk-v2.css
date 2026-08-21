@@ -77,20 +77,13 @@ body.hawk-v2 .pix-header.menu-aroundblock {
   border-bottom: 1px solid rgba(230, 194, 0, 0.28);
 }
 
-body.hawk-v2 .pix-header .row {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: center;
-}
-
 body.hawk-v2 .pix-header .main-menu > li > a,
 body.hawk-v2 .pix-header .navbar-nav > li > a {
-  color: rgba(255, 255, 255, 0.88) !important;
-  font-size: 11px;
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  padding: 8px 9px !important;
 }
 
 body.hawk-v2 .pix-header .main-menu > li > a:hover,
@@ -99,20 +92,10 @@ body.hawk-v2 .pix-header .main-menu > li.current_page_item > a {
   color: var(--hawk-gold) !important;
 }
 
-body.hawk-v2 .pix-header .menu-logo .navbar-brand {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: #fff;
-  padding: 3px 8px 3px 4px;
-  border-radius: 3px;
-  line-height: 0;
-}
-
 body.hawk-v2 .pix-header-logo,
 body.hawk-v2 .menu-logo img,
 body.hawk-v2 .menu-mobile img {
-  max-height: 42px;
+  max-height: 52px;
   width: auto;
 }
 
