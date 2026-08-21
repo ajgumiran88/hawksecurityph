@@ -2,7 +2,7 @@
 /**
  * Plugin Name: HAWK v2 Design Loader
  * Description: Loads the HAWK Security child-theme CSS/JS while Solutech remains the active theme. Skips itself after hawk-security-child is activated.
- * Version: 0.3.0
+ * Version: 0.5.0
  *
  * Deploy target: wp-content/mu-plugins/hawk-v2-loader.php
  */
@@ -36,14 +36,14 @@ add_action(
 			'hawk-v2',
 			$uri . '/assets/css/hawk-v2.css',
 			array( 'style', 'pixtheme-main', 'hawk-v2-fonts' ),
-			'0.3.2'
+			'0.5.0'
 		);
 
 		wp_enqueue_script(
 			'hawk-v2',
 			$uri . '/assets/js/hawk-v2.js',
 			array(),
-			'0.3.2',
+			'0.5.0',
 			true
 		);
 

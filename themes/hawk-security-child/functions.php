@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'HAWK_CHILD_VERSION', '0.4.0' );
+define( 'HAWK_CHILD_VERSION', '0.5.0' );
 define( 'HAWK_CHILD_DIR', get_stylesheet_directory() );
 define( 'HAWK_CHILD_URI', get_stylesheet_directory_uri() );
 

@@ -44,3 +44,6 @@ Thumbs.db
 node_modules/
 dist/
 .cache/
+
+wordpress/_local_export_hawk.sql
+wordpress/wp-config.production.php
