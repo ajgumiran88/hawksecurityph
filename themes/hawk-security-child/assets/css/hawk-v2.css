@@ -1,50 +1,642 @@
 /**
- * HAWK Security v2 — brand tokens & redesign foundation
+ * HAWK Security v2 redesign
  * Prefix: hawk-v2- / hawk-
- * Palette from HAWK logo: safety yellow/gold, black/graphite, white/soft gray
+ * Brand: safety yellow-gold, graphite, white / soft gray
  */
 
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap");
+
 :root {
-  --hawk-gold: #e6b800;
-  --hawk-gold-deep: #c49a00;
-  --hawk-black: #0a0a0a;
-  --hawk-graphite: #1a1a1a;
+  --hawk-gold: #e6c200;
+  --hawk-gold-deep: #c9a800;
+  --hawk-gold-soft: #f6e27a;
+  --hawk-black: #0b0b0b;
+  --hawk-graphite: #161616;
+  --hawk-ink: #1c1c1c;
   --hawk-white: #ffffff;
   --hawk-soft-gray: #f4f4f5;
-  --hawk-muted: #6b7280;
-  --hawk-overlay: rgba(10, 10, 10, 0.55);
+  --hawk-line: #e6e6e8;
+  --hawk-muted: #5f5f5f;
+  --hawk-overlay: rgba(11, 11, 11, 0.58);
+  --hawk-radius: 2px;
+  --hawk-shadow: 0 16px 40px rgba(11, 11, 11, 0.08);
+  --hawk-font: "Manrope", "Segoe UI", sans-serif;
+  --hawk-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --hawk-accent: var(--hawk-gold);
+  --hawk-dark: var(--hawk-black);
+  --hawk-border: var(--hawk-line);
+  --hawk-text-dark: var(--hawk-black);
+  --hawk-text-gray: var(--hawk-muted);
+  --hawk-bg: var(--hawk-white);
 }
 
-/* Motion: respect reduced-motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  .hawk-v2-animate,
-  .hawk-v2-fade-up {
-    animation: none !important;
-    transition: none !important;
-  }
-}
+/* ------------------------------------------------------------------ */
+/* Base                                                                */
+/* ------------------------------------------------------------------ */
 
-/* Foundation only — full redesign ships after approval */
-.hawk-v2-surface {
+.hawk-v2,
+.hawk-v2 body,
+body.hawk-v2 {
+  font-family: var(--hawk-font);
+  color: var(--hawk-ink);
   background: var(--hawk-white);
-  color: var(--hawk-graphite);
 }
 
-.hawk-v2-btn-primary {
+body.hawk-v2 {
+  background: var(--hawk-soft-gray);
+}
+
+body.hawk-v2 .wrapper,
+body.hawk-v2 .layout {
+  background: var(--hawk-white);
+}
+
+body.hawk-v2 h1,
+body.hawk-v2 h2,
+body.hawk-v2 h3,
+body.hawk-v2 h4,
+body.hawk-v2 .pix-h1,
+body.hawk-v2 .vc_custom_heading {
+  font-family: var(--hawk-display);
+  letter-spacing: 0.02em;
+  color: var(--hawk-black);
+  font-weight: 700;
+}
+
+body.hawk-v2 p,
+body.hawk-v2 li {
+  color: var(--hawk-muted);
+}
+
+body.hawk-v2 a {
+  color: var(--hawk-black);
+}
+
+body.hawk-v2 a:hover,
+body.hawk-v2 a:focus-visible {
+  color: var(--hawk-gold-deep);
+}
+
+body.hawk-v2 #page-preloader {
+  background: var(--hawk-black);
+}
+
+body.hawk-v2 #page-preloader .circle {
+  border-color: var(--hawk-gold);
+}
+
+/* ------------------------------------------------------------------ */
+/* Header                                                              */
+/* ------------------------------------------------------------------ */
+
+body.hawk-v2 .pix-header.white,
+body.hawk-v2 .pix-header.white.transparent,
+body.hawk-v2 .pix-header.menu-aroundblock {
+  background: rgba(11, 11, 11, 0.94) !important;
+  border-bottom: 1px solid rgba(230, 194, 0, 0.35);
+  box-shadow: none;
+  backdrop-filter: blur(10px);
+}
+
+body.hawk-v2 .pix-header.sticky-scroll,
+body.hawk-v2 .pix-header.fixed,
+body.hawk-v2.hawk-v2-scrolled .pix-header {
+  background: rgba(11, 11, 11, 0.98) !important;
+}
+
+body.hawk-v2 .pix-header .main-menu > li > a,
+body.hawk-v2 .pix-header .navbar-nav > li > a,
+body.hawk-v2 .pix-header .main-menu-elements a {
+  color: var(--hawk-white) !important;
+  font-family: var(--hawk-font);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+body.hawk-v2 .pix-header .main-menu > li > a:hover,
+body.hawk-v2 .pix-header .main-menu > li.current-menu-item > a,
+body.hawk-v2 .pix-header .main-menu > li.current_page_item > a {
+  color: var(--hawk-gold) !important;
+}
+
+body.hawk-v2 .pix-header-logo,
+body.hawk-v2 .menu-logo img {
+  max-height: 58px;
+  width: auto;
+}
+
+body.hawk-v2 .pix-header .search a,
+body.hawk-v2 .pix-header .pix-header-phone a {
+  color: var(--hawk-white) !important;
+}
+
+body.hawk-v2 .hawk-v2-header-cta {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  padding: 0.875rem 1.5rem;
+  margin-left: 12px;
+  padding: 10px 16px;
   background: var(--hawk-gold);
-  color: var(--hawk-black);
-  font-weight: 600;
-  text-decoration: none;
-  border: none;
+  color: var(--hawk-black) !important;
+  font-family: var(--hawk-font);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  border-radius: var(--hawk-radius);
+  white-space: nowrap;
   transition: background 0.2s ease, transform 0.2s ease;
 }
 
-.hawk-v2-btn-primary:hover,
-.hawk-v2-btn-primary:focus-visible {
+body.hawk-v2 .hawk-v2-header-cta:hover,
+body.hawk-v2 .hawk-v2-header-cta:focus-visible {
   background: var(--hawk-gold-deep);
+  color: var(--hawk-black) !important;
+}
+
+body.hawk-v2 header.menu-mobile,
+body.hawk-v2 .menu-mobile__header,
+body.hawk-v2 .menu-mobile__header.white {
+  background: var(--hawk-black) !important;
+  border-bottom: 1px solid rgba(230, 194, 0, 0.35);
+}
+
+body.hawk-v2 .hamburger-inner,
+body.hawk-v2 .hamburger-inner::before,
+body.hawk-v2 .hamburger-inner::after {
+  background-color: var(--hawk-gold) !important;
+}
+
+body.hawk-v2 .menu-mobile__list,
+body.hawk-v2 .pix-mobile-menu-container {
+  background: var(--hawk-graphite);
+}
+
+body.hawk-v2 .menu-mobile__list a,
+body.hawk-v2 #mobile-menu a {
+  color: var(--hawk-white) !important;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+body.hawk-v2 .menu-mobile__list .current-menu-item > a,
+body.hawk-v2 #mobile-menu .current-menu-item > a {
+  color: var(--hawk-gold) !important;
+}
+
+/* ------------------------------------------------------------------ */
+/* Inner page banners                                                  */
+/* ------------------------------------------------------------------ */
+
+body.hawk-v2 .custom-header {
+  min-height: 42vh;
+  display: flex;
+  align-items: flex-end;
+  background-color: var(--hawk-graphite);
+  background-image:
+    linear-gradient(180deg, rgba(11, 11, 11, 0.45) 0%, rgba(11, 11, 11, 0.72) 100%),
+    url("/wp-content/uploads/2026/01/Gemini_Generated_Image_d6ftgud6ftgud6ft.png");
+  background-size: cover;
+  background-position: center;
+  padding: 7rem 0 3.5rem;
+}
+
+body.hawk-v2 .custom-header .vc_row-overlay {
+  background: transparent !important;
+}
+
+body.hawk-v2 .custom-header .pix-h1,
+body.hawk-v2 .custom-header h1 {
+  color: var(--hawk-white) !important;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  margin-bottom: 0.4rem;
+}
+
+body.hawk-v2 .custom-header .pix-header-title::after {
+  content: "";
+  display: block;
+  width: 72px;
+  height: 3px;
+  background: var(--hawk-gold);
+  margin-top: 12px;
+}
+
+body.hawk-v2 .pix-breadcrumbs-path,
+body.hawk-v2 .pix-header-breadcrumbs,
+body.hawk-v2 .pix-header-breadcrumbs a {
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+
+body.hawk-v2 .pix-header-breadcrumbs a:hover {
+  color: var(--hawk-gold) !important;
+}
+
+/* ------------------------------------------------------------------ */
+/* Hero / Revolution Slider                                            */
+/* ------------------------------------------------------------------ */
+
+body.hawk-v2.home sr7-module,
+body.hawk-v2.home .rev_slider_wrapper {
+  position: relative;
+}
+
+body.hawk-v2.home sr7-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11, 11, 11, 0.42) 0%, rgba(11, 11, 11, 0.62) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+body.hawk-v2.home sr7-txt,
+body.hawk-v2.home sr7-content p.sr7-layer,
+body.hawk-v2.home sr7-content a.sr7-layer {
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
+}
+
+body.hawk-v2 .hawk-v2-hero-cta-wrap {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin: -28px auto 0;
+  padding: 0 20px 12px;
+  max-width: 920px;
+}
+
+body.hawk-v2 .hawk-v2-btn-primary,
+body.hawk-v2 .vc_btn3.vc_btn3-color-black,
+body.hawk-v2 .vc_btn3.vc_btn3-style-modern.vc_btn3-color-black,
+body.hawk-v2 .pix-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0.9rem 1.5rem;
+  background: var(--hawk-gold) !important;
+  color: var(--hawk-black) !important;
+  border: 0 !important;
+  border-radius: var(--hawk-radius) !important;
+  font-family: var(--hawk-font);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  box-shadow: none !important;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+body.hawk-v2 .hawk-v2-btn-primary:hover,
+body.hawk-v2 .vc_btn3.vc_btn3-color-black:hover,
+body.hawk-v2 .pix-button:hover {
+  background: var(--hawk-gold-deep) !important;
+  color: var(--hawk-black) !important;
+}
+
+body.hawk-v2 .hawk-v2-btn-ghost,
+body.hawk-v2 .vc_btn3.vc_btn3-style-outline {
+  background: transparent !important;
+  color: var(--hawk-black) !important;
+  border: 1px solid var(--hawk-black) !important;
+}
+
+body.hawk-v2 .hawk-v2-btn-ghost:hover,
+body.hawk-v2 .vc_btn3.vc_btn3-style-outline:hover {
+  background: var(--hawk-black) !important;
+  color: var(--hawk-white) !important;
+}
+
+/* ------------------------------------------------------------------ */
+/* Existing hawk-* content (override lime / Orbitron)                  */
+/* ------------------------------------------------------------------ */
+
+.hawk-services-portal,
+.hawk-process-portal,
+.hawk-affiliates-section {
+  background: var(--hawk-white) !important;
+  font-family: var(--hawk-font) !important;
+}
+
+.hawk-services-portal::before,
+.hawk-process-portal::before,
+.hawk-affiliates-section::before {
+  background-image: none !important;
+  opacity: 0 !important;
+}
+
+.hawk-main-title,
+.hawk-proc-title,
+.hawk-aff-title,
+.hawk-card-body h3,
+.hawk-proc-inner h3,
+.hawk-aff-info h3 {
+  font-family: var(--hawk-display) !important;
+  color: var(--hawk-black) !important;
+  text-transform: none !important;
+  font-weight: 700 !important;
+}
+
+.hawk-text-accent,
+.hawk-proc-accent,
+.hawk-text-gold,
+.hawk-proc-tag,
+.hawk-arrow {
+  color: var(--hawk-gold) !important;
+  text-shadow: none !important;
+}
+
+.hawk-pill,
+.hawk-proc-badge,
+.hawk-alliance-badge {
+  font-family: var(--hawk-font) !important;
+  letter-spacing: 0.14em !important;
+  border-color: var(--hawk-line) !important;
+  background: var(--hawk-soft-gray) !important;
+  color: var(--hawk-black) !important;
+  border-radius: 999px !important;
+  text-transform: uppercase;
+}
+
+.hawk-status-ping,
+.hawk-proc-ping,
+.hawk-badge-dot {
+  background: var(--hawk-gold) !important;
+  box-shadow: none !important;
+}
+
+.hawk-card-frame,
+.hawk-proc-inner,
+.hawk-aff-card {
+  border: 1px solid var(--hawk-line) !important;
+  box-shadow: none !important;
+  background: var(--hawk-white) !important;
+}
+
+.hawk-card:hover,
+.hawk-proc-link:hover,
+.hawk-aff-card:hover {
+  transform: translateY(-6px);
+}
+
+.hawk-card:hover .hawk-card-frame,
+.hawk-proc-link:hover .hawk-proc-inner,
+.hawk-aff-card:hover {
+  border-color: var(--hawk-gold) !important;
+  box-shadow: var(--hawk-shadow) !important;
+}
+
+.hawk-img-overlay {
+  background: linear-gradient(to bottom, transparent, rgba(11, 11, 11, 0.28)) !important;
+}
+
+.hawk-proc-inner li::before {
+  color: var(--hawk-gold) !important;
+  font-family: var(--hawk-font) !important;
+  content: "•" !important;
+}
+
+[class^="corner-"],
+[class^="hawk-bracket-"] {
+  opacity: 0 !important;
+}
+
+.hawk-portal-desc,
+.hawk-proc-desc,
+.hawk-aff-subtitle,
+.hawk-card-body p,
+.hawk-proc-inner li,
+.hawk-aff-url {
+  color: var(--hawk-muted) !important;
+  font-family: var(--hawk-font) !important;
+}
+
+/* ------------------------------------------------------------------ */
+/* Services / about / careers content cards                            */
+/* ------------------------------------------------------------------ */
+
+body.hawk-v2 .wpb_single_image img,
+body.hawk-v2 .vc_single_image-wrapper img {
+  border-radius: var(--hawk-radius);
+}
+
+body.hawk-v2 .wpb_text_column h2,
+body.hawk-v2 .wpb_text_column h3 {
+  margin-top: 0.2em;
+}
+
+body.hawk-v2 .pix-accordion-btn {
+  background: var(--hawk-white);
+  border: 1px solid var(--hawk-line) !important;
   color: var(--hawk-black);
+  font-weight: 600;
+}
+
+body.hawk-v2 .page-id-2430 .wpb_column,
+body.hawk-v2 .page-id-804 .wpb_column {
+  margin-bottom: 0.5rem;
+}
+
+body.page-id-2430 .vc_column_container h3,
+body.page-id-804 h2 {
+  position: relative;
+}
+
+body.hawk-v2 .vc_row.vc_row-has-fill {
+  background-color: var(--hawk-soft-gray);
+}
+
+body.hawk-v2 .vc_custom_1739176079983,
+body.hawk-v2 .wpb_text_column h1 {
+  color: var(--hawk-black);
+}
+
+/* Final CTA band */
+body.hawk-v2 .vc_custom_1739176079983 {
+  background: var(--hawk-graphite) !important;
+  color: var(--hawk-white);
+}
+
+body.hawk-v2 .vc_custom_1739176079983 h1,
+body.hawk-v2 .vc_custom_1739176079983 p {
+  color: var(--hawk-white) !important;
+}
+
+/* ------------------------------------------------------------------ */
+/* Footer                                                              */
+/* ------------------------------------------------------------------ */
+
+body.hawk-v2 .pix-footer {
+  background: var(--hawk-black) !important;
+  color: rgba(255, 255, 255, 0.78);
+  border-top: 3px solid var(--hawk-gold);
+  padding-top: 1rem;
+}
+
+body.hawk-v2 .pix-footer h2,
+body.hawk-v2 .pix-footer h3,
+body.hawk-v2 .pix-footer h4,
+body.hawk-v2 .pix-footer p,
+body.hawk-v2 .pix-footer li,
+body.hawk-v2 .pix-footer a,
+body.hawk-v2 .pix-footer .widget {
+  color: rgba(255, 255, 255, 0.82) !important;
+}
+
+body.hawk-v2 .pix-footer a:hover {
+  color: var(--hawk-gold) !important;
+}
+
+body.hawk-v2 .pix-footer .menu a {
+  font-size: 14px;
+}
+
+body.hawk-v2 .footer-copyright,
+body.hawk-v2 .footer-created_by,
+body.hawk-v2 .pix-footer__bottom {
+  color: rgba(255, 255, 255, 0.55);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ------------------------------------------------------------------ */
+/* Forms                                                               */
+/* ------------------------------------------------------------------ */
+
+body.hawk-v2 .wpcf7 input[type="text"],
+body.hawk-v2 .wpcf7 input[type="email"],
+body.hawk-v2 .wpcf7 input[type="tel"],
+body.hawk-v2 .wpcf7 select,
+body.hawk-v2 .wpcf7 textarea,
+body.hawk-v2 .pix-site-input,
+body.hawk-v2 .select-custom {
+  background: var(--hawk-white) !important;
+  border: 1px solid var(--hawk-line) !important;
+  border-radius: var(--hawk-radius) !important;
+  color: var(--hawk-black) !important;
+  padding: 12px 14px !important;
+  font-family: var(--hawk-font) !important;
+  box-shadow: none !important;
+}
+
+body.hawk-v2 .wpcf7 input:focus,
+body.hawk-v2 .wpcf7 select:focus,
+body.hawk-v2 .wpcf7 textarea:focus {
+  border-color: var(--hawk-gold) !important;
+  outline: 2px solid rgba(230, 194, 0, 0.35);
+}
+
+body.hawk-v2 .wpcf7 input[type="submit"],
+body.hawk-v2 .form-group button,
+body.hawk-v2 .wpcf7-submit {
+  background: var(--hawk-gold) !important;
+  background-image: none !important;
+  color: var(--hawk-black) !important;
+  border: 0 !important;
+  border-radius: var(--hawk-radius) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 14px 28px !important;
+}
+
+body.hawk-v2 .wpcf7 input[type="submit"]:hover,
+body.hawk-v2 .form-group button:hover,
+body.hawk-v2 .wpcf7-submit:hover {
+  background: var(--hawk-gold-deep) !important;
+  transform: none !important;
+}
+
+body.hawk-v2 .pix-contact-form {
+  background: var(--hawk-soft-gray);
+  border: 1px solid var(--hawk-line);
+  border-radius: 8px;
+  padding: 28px !important;
+  max-width: 100% !important;
+}
+
+/* ------------------------------------------------------------------ */
+/* Motion                                                              */
+/* ------------------------------------------------------------------ */
+
+body.hawk-v2 .hawk-v2-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: hawk-v2-fade-up 0.7s ease forwards;
+}
+
+@keyframes hawk-v2-fade-up {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+body.hawk-v2 .hawk-card,
+body.hawk-v2 .hawk-proc-link,
+body.hawk-v2 .hawk-aff-card,
+body.hawk-v2 .vc_btn3,
+body.hawk-v2 .pix-button {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.hawk-v2 *,
+  body.hawk-v2 *::before,
+  body.hawk-v2 *::after,
+  .hawk-v2-animate,
+  .hawk-v2-fade-up,
+  .hawk-status-ping,
+  .hawk-proc-ping {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  body.hawk-v2 .hawk-card:hover,
+  body.hawk-v2 .hawk-proc-link:hover,
+  body.hawk-v2 .hawk-aff-card:hover {
+    transform: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Responsive                                                          */
+/* ------------------------------------------------------------------ */
+
+@media (max-width: 1024px) {
+  body.hawk-v2 .hawk-v2-header-cta {
+    display: none;
+  }
+
+  body.hawk-v2 .custom-header {
+    min-height: 32vh;
+    padding: 6rem 0 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  body.hawk-v2 .custom-header .pix-h1 {
+    font-size: 2rem;
+  }
+
+  body.hawk-v2 .pix-header.menu-aroundblock {
+    display: none;
+  }
+
+  body.hawk-v2 .hawk-v2-hero-cta-wrap {
+    margin-top: 12px;
+    justify-content: stretch;
+  }
+
+  body.hawk-v2 .hawk-v2-btn-primary {
+    width: 100%;
+  }
+
+  body.hawk-v2 .pix-contact-form {
+    padding: 18px !important;
+  }
 }

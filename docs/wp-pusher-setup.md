@@ -26,7 +26,10 @@
 4. Activate **HAWK Security Child** after verifying parent Solutech is present.
 5. Leave push-to-deploy **disabled** until redesign is approved.
 
+## Immediate visual overlay
+
+Until the child theme is activated, `mu-plugins/hawk-v2-loader.php` loads the same CSS/JS while Solutech stays active. Remove that mu-plugin after `hawk-security-child` is activated to avoid duplicate enqueue.
+
 ## Blockers
 
 - WordPress admin credentials are required to install/configure WP Pusher on live.
-- No production deployment will be made without explicit approval.
