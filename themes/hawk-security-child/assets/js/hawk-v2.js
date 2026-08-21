@@ -1,5 +1,5 @@
 /**
- * HAWK Security v2 — header CTA, hero quote button, restrained motion
+ * HAWK Security v2.3 — restructure hero CTA and soften tactical labels
  */
 (function () {
   "use strict";
@@ -12,9 +12,6 @@
   };
 
   document.documentElement.classList.add("hawk-v2-js");
-  if (document.body) {
-    document.body.classList.add("hawk-v2");
-  }
 
   function onReady(fn) {
     if (document.readyState === "loading") {
@@ -25,7 +22,7 @@
   }
 
   function injectHeaderCta() {
-    if (document.querySelector(".hawk-v2-header-cta")) {
+    if (document.querySelector(".pix-menu-center-logo-right .hawk-v2-header-cta")) {
       return;
     }
     var rightNav = document.querySelector(".pix-menu-center-logo-right .main-menu");
@@ -57,55 +54,71 @@
     menu.appendChild(li);
   }
 
-  function injectHeroCta() {
-    if (!document.body.classList.contains("home")) {
-      return;
-    }
-    if (document.querySelector(".hawk-v2-hero-cta-wrap")) {
-      return;
-    }
-    var slider =
-      document.querySelector("sr7-module") ||
-      document.querySelector(".rev_slider_wrapper") ||
-      document.querySelector(".wpb-content-wrapper");
-    if (!slider || !slider.parentNode) {
-      return;
-    }
-    var wrap = document.createElement("div");
-    wrap.className = "hawk-v2-hero-cta-wrap";
-    var primary = document.createElement("a");
-    primary.className = "hawk-v2-btn-primary hawk-v2-hero-cta";
-    primary.href = cfg.contactUrl;
-    primary.textContent = cfg.quoteLabel;
-    wrap.appendChild(primary);
-    slider.parentNode.insertBefore(wrap, slider.nextSibling);
+  function upgradeSliderCta() {
+    var links = document.querySelectorAll("sr7-content a.sr7-layer");
+    links.forEach(function (a) {
+      var t = (a.textContent || "").replace(/\s+/g, " ").trim().toUpperCase();
+      if (t === "ABOUT US" || t.indexOf("ABOUT US") !== -1) {
+        if (a.textContent !== cfg.quoteLabel) {
+          a.textContent = cfg.quoteLabel;
+        }
+        a.setAttribute("href", cfg.contactUrl);
+        a.classList.add("hawk-v2-slider-cta");
+      }
+    });
   }
 
-  function observeReveal() {
-    if (reduceMotion || !("IntersectionObserver" in window)) {
+  function watchSliderCta() {
+    upgradeSliderCta();
+    var content = document.querySelector("sr7-content");
+    if (!content || content.getAttribute("data-hawk-cta") === "1") {
       return;
     }
-    var nodes = document.querySelectorAll(
-      ".hawk-card, .hawk-proc-link, .hawk-aff-card, .wpb_text_column, .custom-header"
-    );
-    var io = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("hawk-v2-reveal");
-            io.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12 }
-    );
-    nodes.forEach(function (el) {
-      io.observe(el);
+    content.setAttribute("data-hawk-cta", "1");
+    var obs = new MutationObserver(upgradeSliderCta);
+    obs.observe(content, { childList: true, subtree: true, characterData: true });
+    window.setTimeout(upgradeSliderCta, 400);
+    window.setTimeout(upgradeSliderCta, 1200);
+  }
+
+  function softenLabels() {
+    var process = document.querySelectorAll(".hawk-proc-tag");
+    var processMap = ["01  Consultation", "02  Assessment", "03  Deployment"];
+    process.forEach(function (el, i) {
+      if (processMap[i]) {
+        el.textContent = processMap[i];
+      }
+    });
+
+    document.querySelectorAll(".hawk-clean-badge").forEach(function (el) {
+      el.lastChild && el.lastChild.nodeType === 3
+        ? (el.lastChild.textContent = " Security Services")
+        : null;
+      var text = el.textContent || "";
+      if (/OPERATIONAL|SYSTEM STATUS/i.test(text)) {
+        var ping = el.querySelector(".hawk-clean-ping");
+        el.textContent = "";
+        if (ping) {
+          el.appendChild(ping);
+        }
+        el.appendChild(document.createTextNode(" Security Services"));
+      }
+    });
+
+    document.querySelectorAll(".hawk-proc-badge").forEach(function (el) {
+      if (/ENGAGEMENT PROTOCOL|PIPELINE/i.test(el.textContent || "")) {
+        var ping = el.querySelector(".hawk-proc-ping");
+        el.textContent = "";
+        if (ping) {
+          el.appendChild(ping);
+        }
+        el.appendChild(document.createTextNode(" How we engage"));
+      }
     });
   }
 
   function onScroll() {
-    if (window.scrollY > 12) {
+    if (window.scrollY > 8) {
       document.body.classList.add("hawk-v2-scrolled");
     } else {
       document.body.classList.remove("hawk-v2-scrolled");
@@ -116,8 +129,8 @@
     document.body.classList.add("hawk-v2");
     injectHeaderCta();
     injectMobileCta();
-    injectHeroCta();
-    observeReveal();
+    watchSliderCta();
+    softenLabels();
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
   });
