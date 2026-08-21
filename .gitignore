@@ -1,0 +1,46 @@
+# --- Local secrets & environment ---
+.secrets/
+*.pem
+*.key
+.env
+.env.*
+!.env.example
+wp-config.php
+**/wp-config.php
+*.appconfig.php
+
+# --- Full production mirror (local backup only; not for GitHub) ---
+/wordpress/
+/_server-misc/
+*.sql
+*.sql.gz
+*.tar
+*.tar.gz
+*.zip
+backup/
+backups/
+*.bak
+
+# --- WordPress runtime / cache / logs ---
+**/wp-content/cache/
+**/wp-content/upgrade/
+**/wp-content/upgrade-temp-backup/
+**/wp-content/uploads/
+**/wp-content/*.log
+**/*.log
+.opcache/
+error_log
+debug.log
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# --- Node / build (if added later) ---
+node_modules/
+dist/
+.cache/

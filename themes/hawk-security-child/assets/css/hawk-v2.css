@@ -1,0 +1,50 @@
+/**
+ * HAWK Security v2 — brand tokens & redesign foundation
+ * Prefix: hawk-v2- / hawk-
+ * Palette from HAWK logo: safety yellow/gold, black/graphite, white/soft gray
+ */
+
+:root {
+  --hawk-gold: #e6b800;
+  --hawk-gold-deep: #c49a00;
+  --hawk-black: #0a0a0a;
+  --hawk-graphite: #1a1a1a;
+  --hawk-white: #ffffff;
+  --hawk-soft-gray: #f4f4f5;
+  --hawk-muted: #6b7280;
+  --hawk-overlay: rgba(10, 10, 10, 0.55);
+}
+
+/* Motion: respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .hawk-v2-animate,
+  .hawk-v2-fade-up {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Foundation only — full redesign ships after approval */
+.hawk-v2-surface {
+  background: var(--hawk-white);
+  color: var(--hawk-graphite);
+}
+
+.hawk-v2-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 1.5rem;
+  background: var(--hawk-gold);
+  color: var(--hawk-black);
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.hawk-v2-btn-primary:hover,
+.hawk-v2-btn-primary:focus-visible {
+  background: var(--hawk-gold-deep);
+  color: var(--hawk-black);
+}
