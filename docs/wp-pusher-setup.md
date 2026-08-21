@@ -4,7 +4,7 @@
 
 | Setting | Value |
 |---------|--------|
-| Repository | *(created as hawksecurityph — confirm after push)* |
+| Repository | https://github.com/ajgumiran88/hawksecurityph |
 | Package type | **Theme** |
 | Theme folder | `hawk-security-child` |
 | Subdir / monorepo path | `themes/hawk-security-child` (if WP Pusher supports subdirectory install) |
