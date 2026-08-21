@@ -34,7 +34,7 @@
     var a = document.createElement("a");
     a.className = "hawk-v2-header-cta";
     a.href = cfg.contactUrl;
-    a.textContent = cfg.quoteLabel;
+    a.textContent = "Get a Quote";
     li.appendChild(a);
     rightNav.appendChild(li);
   }
