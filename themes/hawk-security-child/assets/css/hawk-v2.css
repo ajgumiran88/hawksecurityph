@@ -5,7 +5,7 @@
  * Seamlessly integrates with existing WPBakery interior content.
  *
  * @package Hawk_Security_Child
- * @version 0.5.0
+ * @version 0.5.1
  */
 
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap");
@@ -275,12 +275,10 @@ body.hawk-v2 .vc_btn3.vc_btn3-style-outline {
 }
 
 .hawk-v2-logo-img {
-  max-height: 48px;
+  max-height: 52px;
   width: auto;
   display: block;
   transition: max-height 0.25s ease;
-  /* Dark wordmark stays readable on black header */
-  filter: brightness(0) invert(1);
 }
 
 .hawk-v2-scrolled .hawk-v2-logo-img {
@@ -403,9 +401,8 @@ body.hawk-v2-drawer-active .hawk-v2-drawer-panel {
 }
 
 .hawk-v2-drawer-logo img {
-  max-height: 40px;
+  max-height: 44px;
   width: auto;
-  filter: brightness(0) invert(1);
 }
 
 .hawk-v2-drawer-close {
@@ -650,11 +647,10 @@ body.hawk-v2-drawer-active .hawk-v2-drawer-panel {
 }
 
 .hawk-v2-footer-logo {
-  max-height: 48px;
+  max-height: 52px;
   width: auto;
   margin-bottom: 18px;
   display: block;
-  filter: brightness(0) invert(1);
 }
 
 .hawk-v2-footer-tagline {

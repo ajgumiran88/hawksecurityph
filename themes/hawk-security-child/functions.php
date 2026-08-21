@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'HAWK_CHILD_VERSION', '0.5.0' );
+define( 'HAWK_CHILD_VERSION', '0.5.1' );
 define( 'HAWK_CHILD_DIR', get_stylesheet_directory() );
 define( 'HAWK_CHILD_URI', get_stylesheet_directory_uri() );
 
@@ -109,6 +109,11 @@ add_filter( 'body_class', 'hawk_security_child_body_class' );
  * @return string Logo image URL.
  */
 function hawk_get_logo_url() {
+	$theme_logo = HAWK_CHILD_URI . '/assets/img/hawk-logo.png';
+	if ( file_exists( HAWK_CHILD_DIR . '/assets/img/hawk-logo.png' ) ) {
+		return esc_url( $theme_logo );
+	}
+
 	$custom_logo_id = get_theme_mod( 'custom_logo' );
 	if ( $custom_logo_id ) {
 		$logo = wp_get_attachment_image_src( $custom_logo_id, 'full' );
