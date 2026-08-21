@@ -1,17 +1,20 @@
 /**
- * HAWK Security v2.3 — restructure hero CTA and soften tactical labels
+ * HAWK Security Child Theme — Native Chrome Interactions
+ *
+ * Handles mobile drawer toggle, scroll header state, and accessible interactions.
+ * Obsolete Revolution Slider observer and header DOM injection hacks have been removed.
+ *
+ * @package Hawk_Security_Child
  */
+
 (function () {
   "use strict";
 
-  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var cfg = window.hawkV2 || {
     homeUrl: "/",
     contactUrl: "/contacts/",
     quoteLabel: "Request a Security Quote",
   };
-
-  document.documentElement.classList.add("hawk-v2-js");
 
   function onReady(fn) {
     if (document.readyState === "loading") {
@@ -21,66 +24,90 @@
     }
   }
 
-  function injectHeaderCta() {
-    if (document.querySelector(".pix-menu-center-logo-right .hawk-v2-header-cta")) {
-      return;
-    }
-    var rightNav = document.querySelector(".pix-menu-center-logo-right .main-menu");
-    if (!rightNav) {
-      return;
-    }
-    var li = document.createElement("li");
-    li.className = "menu-item hawk-v2-header-cta-item";
-    var a = document.createElement("a");
-    a.className = "hawk-v2-header-cta";
-    a.href = cfg.contactUrl;
-    a.textContent = cfg.quoteLabel;
-    li.appendChild(a);
-    rightNav.appendChild(li);
-  }
+  /**
+   * Mobile navigation drawer toggle.
+   */
+  function initMobileDrawer() {
+    var openBtn = document.querySelector(".js-hawk-drawer-open");
+    var closeBtns = document.querySelectorAll(".js-hawk-drawer-close");
+    var drawer = document.getElementById("hawk-v2-mobile-drawer");
 
-  function injectMobileCta() {
-    var menu = document.getElementById("mobile-menu");
-    if (!menu || menu.querySelector(".hawk-v2-header-cta")) {
+    if (!drawer) {
       return;
     }
-    var li = document.createElement("li");
-    li.className = "menu-item";
-    var a = document.createElement("a");
-    a.className = "hawk-v2-header-cta";
-    a.href = cfg.contactUrl;
-    a.textContent = cfg.quoteLabel;
-    li.appendChild(a);
-    menu.appendChild(li);
-  }
 
-  function upgradeSliderCta() {
-    var links = document.querySelectorAll("sr7-content a.sr7-layer");
-    links.forEach(function (a) {
-      var t = (a.textContent || "").replace(/\s+/g, " ").trim().toUpperCase();
-      if (t === "ABOUT US" || t.indexOf("ABOUT US") !== -1) {
-        if (a.textContent !== cfg.quoteLabel) {
-          a.textContent = cfg.quoteLabel;
-        }
-        a.setAttribute("href", cfg.contactUrl);
-        a.classList.add("hawk-v2-slider-cta");
+    function openDrawer() {
+      document.body.classList.add("hawk-v2-drawer-active");
+      drawer.setAttribute("aria-hidden", "false");
+      if (openBtn) {
+        openBtn.setAttribute("aria-expanded", "true");
       }
+    }
+
+    function closeDrawer() {
+      document.body.classList.remove("hawk-v2-drawer-active");
+      drawer.setAttribute("aria-hidden", "true");
+      if (openBtn) {
+        openBtn.setAttribute("aria-expanded", "false");
+      }
+    }
+
+    if (openBtn) {
+      openBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        openDrawer();
+      });
+    }
+
+    closeBtns.forEach(function (btn) {
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        closeDrawer();
+      });
+    });
+
+    // Close on escape key
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && document.body.classList.contains("hawk-v2-drawer-active")) {
+        closeDrawer();
+      }
+    });
+
+    // Close on clicking links in the drawer
+    var drawerLinks = drawer.querySelectorAll("a");
+    drawerLinks.forEach(function (link) {
+      link.addEventListener("click", function () {
+        closeDrawer();
+      });
     });
   }
 
-  function watchSliderCta() {
-    upgradeSliderCta();
-    var content = document.querySelector("sr7-content");
-    if (!content || content.getAttribute("data-hawk-cta") === "1") {
+  /**
+   * Sticky header shadow & compact state on scroll.
+   */
+  function initScrollHeader() {
+    var masthead = document.getElementById("hawk-v2-masthead");
+    if (!masthead) {
       return;
     }
-    content.setAttribute("data-hawk-cta", "1");
-    var obs = new MutationObserver(upgradeSliderCta);
-    obs.observe(content, { childList: true, subtree: true, characterData: true });
-    window.setTimeout(upgradeSliderCta, 400);
-    window.setTimeout(upgradeSliderCta, 1200);
+
+    function onScroll() {
+      if (window.scrollY > 15) {
+        masthead.classList.add("hawk-v2-scrolled");
+        document.body.classList.add("hawk-v2-scrolled");
+      } else {
+        masthead.classList.remove("hawk-v2-scrolled");
+        document.body.classList.remove("hawk-v2-scrolled");
+      }
+    }
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
   }
 
+  /**
+   * Refine tactical process labels on legacy WPBakery cards if present.
+   */
   function softenLabels() {
     var process = document.querySelectorAll(".hawk-proc-tag");
     var processMap = ["01  Consultation", "02  Assessment", "03  Deployment"];
@@ -117,21 +144,10 @@
     });
   }
 
-  function onScroll() {
-    if (window.scrollY > 8) {
-      document.body.classList.add("hawk-v2-scrolled");
-    } else {
-      document.body.classList.remove("hawk-v2-scrolled");
-    }
-  }
-
   onReady(function () {
-    document.body.classList.add("hawk-v2");
-    injectHeaderCta();
-    injectMobileCta();
-    watchSliderCta();
+    document.documentElement.classList.add("hawk-v2-js");
+    initMobileDrawer();
+    initScrollHeader();
     softenLabels();
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
   });
 })();

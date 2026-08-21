@@ -1,6 +1,11 @@
 /**
- * HAWK Security v2.3 — premium public overlay
- * Restyles Solutech + WPBakery + existing hawk-* / hawk-clean-* blocks.
+ * HAWK Security Child Theme — Native Chrome & Interior Styles
+ *
+ * Scoped styles for native header, homepage hero, page banner, footer, and mobile drawer.
+ * Seamlessly integrates with existing WPBakery interior content.
+ *
+ * @package Hawk_Security_Child
+ * @version 0.4.0
  */
 
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap");
@@ -16,25 +21,33 @@
   --hawk-soft-gray: #f6f6f7;
   --hawk-line: #e8e8ea;
   --hawk-muted: #5a5a5a;
-  --hawk-overlay: rgba(11, 11, 11, 0.62);
   --hawk-radius: 4px;
   --hawk-shadow: 0 18px 50px rgba(11, 11, 11, 0.08);
+  --hawk-header-height: 82px;
   --hawk-font: "Manrope", "Segoe UI", sans-serif;
   --hawk-display: "Barlow Condensed", "Arial Narrow", sans-serif;
-  --hawk-accent: var(--hawk-gold);
-  --hawk-dark: var(--hawk-black);
-  --hawk-border: var(--hawk-line);
-  --hawk-text-dark: var(--hawk-black);
-  --hawk-text-gray: var(--hawk-muted);
-  --hawk-bg: var(--hawk-white);
 }
 
-body.hawk-v2,
-body.hawk-v2 .wrapper,
-body.hawk-v2 .layout {
+/* ------------------------------------------------------------------ */
+/* Global Resets & Typography                                         */
+/* ------------------------------------------------------------------ */
+
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body.hawk-v2 {
   font-family: var(--hawk-font);
   color: var(--hawk-ink);
-  background: var(--hawk-white);
+  background-color: var(--hawk-white);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body.hawk-v2 #page-preloader {
@@ -61,188 +74,22 @@ body.hawk-v2 li {
   line-height: 1.7;
 }
 
+body.hawk-v2 a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
 body.hawk-v2 a:hover,
 body.hawk-v2 a:focus-visible {
   color: var(--hawk-gold-deep);
 }
 
 /* ------------------------------------------------------------------ */
-/* Header                                                              */
+/* Buttons                                                             */
 /* ------------------------------------------------------------------ */
 
-body.hawk-v2 .pix-header.white,
-body.hawk-v2 .pix-header.white.transparent,
-body.hawk-v2 .pix-header.menu-aroundblock {
-  background: #0b0b0b !important;
-  border-bottom: 1px solid rgba(230, 194, 0, 0.28);
-}
-
-body.hawk-v2 .pix-header .main-menu > li > a,
-body.hawk-v2 .pix-header .navbar-nav > li > a {
-  color: rgba(255, 255, 255, 0.9) !important;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-body.hawk-v2 .pix-header .main-menu > li > a:hover,
-body.hawk-v2 .pix-header .main-menu > li.current-menu-item > a,
-body.hawk-v2 .pix-header .main-menu > li.current_page_item > a {
-  color: var(--hawk-gold) !important;
-}
-
-body.hawk-v2 .pix-header-logo,
-body.hawk-v2 .menu-logo img,
-body.hawk-v2 .menu-mobile img {
-  max-height: 52px;
-  width: auto;
-}
-
-body.hawk-v2 .hawk-v2-header-cta {
-  display: inline-flex;
-  align-items: center;
-  margin-left: 10px;
-  padding: 9px 14px;
-  background: var(--hawk-gold);
-  color: var(--hawk-black) !important;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-decoration: none !important;
-  border-radius: var(--hawk-radius);
-  transition: background 0.2s ease;
-}
-
-body.hawk-v2 .hawk-v2-header-cta:hover,
-body.hawk-v2 .hawk-v2-header-cta:focus-visible {
-  background: var(--hawk-gold-deep);
-  color: var(--hawk-black) !important;
-}
-
-body.hawk-v2 header.menu-mobile,
-body.hawk-v2 .menu-mobile__header,
-body.hawk-v2 .menu-mobile__header.white {
-  background: var(--hawk-black) !important;
-}
-
-body.hawk-v2 .hamburger-inner,
-body.hawk-v2 .hamburger-inner::before,
-body.hawk-v2 .hamburger-inner::after {
-  background-color: var(--hawk-gold) !important;
-}
-
-body.hawk-v2 .menu-mobile__list,
-body.hawk-v2 .pix-mobile-menu-container,
-body.hawk-v2 .menu-mobile__list #mobile-menu {
-  background: var(--hawk-graphite) !important;
-}
-
-body.hawk-v2 #mobile-menu a {
-  color: #fff !important;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-size: 13px;
-}
-
-body.hawk-v2 #mobile-menu .hawk-v2-header-cta {
-  display: inline-flex;
-  margin: 16px 20px 24px;
-}
-
-/* ------------------------------------------------------------------ */
-/* Inner banners                                                       */
-/* ------------------------------------------------------------------ */
-
-body.hawk-v2 .custom-header {
-  min-height: 46vh;
-  display: flex;
-  align-items: flex-end;
-  background-color: var(--hawk-graphite);
-  background-image:
-    linear-gradient(180deg, rgba(11, 11, 11, 0.38) 0%, rgba(11, 11, 11, 0.78) 100%),
-    url("/wp-content/uploads/2026/01/Gemini_Generated_Image_d6ftgud6ftgud6ft.png");
-  background-size: cover;
-  background-position: center 30%;
-  padding: 8.5rem 0 3.75rem;
-  margin-bottom: 3rem;
-}
-
-body.hawk-v2 .custom-header .vc_row-overlay {
-  display: none !important;
-}
-
-body.hawk-v2 .custom-header .pix-h1,
-body.hawk-v2 .custom-header h1 {
-  color: #fff !important;
-  font-size: clamp(2.6rem, 6vw, 4.4rem);
-  margin: 0;
-}
-
-body.hawk-v2 .custom-header .pix-header-title::after {
-  content: "";
-  display: block;
-  width: 64px;
-  height: 3px;
-  background: var(--hawk-gold);
-  margin-top: 14px;
-}
-
-body.hawk-v2 .pix-breadcrumbs-path,
-body.hawk-v2 .pix-header-breadcrumbs,
-body.hawk-v2 .pix-header-breadcrumbs a {
-  color: rgba(255, 255, 255, 0.78) !important;
-  font-size: 13px;
-  letter-spacing: 0.04em;
-}
-
-body.hawk-v2:not(.home) .wpb-content-wrapper {
-  padding-left: 8px;
-  padding-right: 8px;
-  padding-top: 1.25rem;
-  background: var(--hawk-white);
-  position: relative;
-  z-index: 2;
-}
-
-body.hawk-v2:not(.home) .pix-section-title h2,
-body.hawk-v2:not(.home) .vc_custom_heading {
-  margin-bottom: 0.6em;
-}
-
-/* ------------------------------------------------------------------ */
-/* Hero slider                                                         */
-/* ------------------------------------------------------------------ */
-
-body.hawk-v2.home sr7-module {
-  position: relative;
-}
-
-body.hawk-v2.home sr7-content a.sr7-layer,
-body.hawk-v2 .hawk-v2-slider-cta {
-  background: var(--hawk-gold) !important;
-  color: var(--hawk-black) !important;
-  border: 0 !important;
-  border-radius: var(--hawk-radius) !important;
-  font-family: var(--hawk-font) !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.08em !important;
-  text-transform: uppercase !important;
-  text-shadow: none !important;
-  box-shadow: none !important;
-  padding: 14px 26px !important;
-}
-
-body.hawk-v2 .hawk-v2-hero-cta-wrap {
-  display: none !important;
-}
-
-/* ------------------------------------------------------------------ */
-/* Shared buttons                                                      */
-/* ------------------------------------------------------------------ */
-
-body.hawk-v2 .hawk-v2-btn-primary,
+.hawk-v2-btn,
 body.hawk-v2 .vc_btn3.vc_btn3-color-black,
 body.hawk-v2 .vc_btn3.vc_btn3-style-modern.vc_btn3-color-black,
 body.hawk-v2 .pix-button,
@@ -251,38 +98,661 @@ body.hawk-v2 .form-group button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 14px 26px !important;
+  gap: 10px;
+  padding: 13px 26px !important;
   background: var(--hawk-gold) !important;
   background-image: none !important;
   color: var(--hawk-black) !important;
+  font-family: var(--hawk-font) !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
   border: 0 !important;
   border-radius: var(--hawk-radius) !important;
-  font-family: var(--hawk-font);
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
   box-shadow: none !important;
-  transition: background 0.2s ease;
+  cursor: pointer;
+  text-decoration: none !important;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.hawk-v2-btn:hover,
+.hawk-v2-btn:focus-visible,
 body.hawk-v2 .vc_btn3.vc_btn3-color-black:hover,
 body.hawk-v2 .pix-button:hover,
 body.hawk-v2 .wpcf7-submit:hover,
 body.hawk-v2 .form-group button:hover {
   background: var(--hawk-gold-deep) !important;
   color: var(--hawk-black) !important;
-  transform: none !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(230, 194, 0, 0.25);
 }
 
+.hawk-v2-btn-outline,
 body.hawk-v2 .vc_btn3.vc_btn3-style-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 24px !important;
   background: transparent !important;
+  color: var(--hawk-white) !important;
+  font-family: var(--hawk-font) !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  border: 2px solid var(--hawk-white) !important;
+  border-radius: var(--hawk-radius) !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+}
+
+.hawk-v2-btn-outline:hover,
+.hawk-v2-btn-outline:focus-visible {
+  background: var(--hawk-white) !important;
   color: var(--hawk-black) !important;
-  border: 1px solid var(--hawk-black) !important;
+  transform: translateY(-2px);
+}
+
+.hawk-v2-btn-block {
+  width: 100%;
+}
+
+.hawk-v2-heading-bar {
+  width: 54px;
+  height: 3px;
+  background: var(--hawk-gold);
+  margin: 12px 0 20px;
 }
 
 /* ------------------------------------------------------------------ */
-/* Homepage sections + services page cards                             */
+/* Native Header                                                       */
+/* ------------------------------------------------------------------ */
+
+.hawk-v2-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: #0b0b0b;
+  border-bottom: 1px solid rgba(230, 194, 0, 0.25);
+  transition: padding 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hawk-v2-header-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: var(--hawk-header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  transition: height 0.25s ease;
+}
+
+.hawk-v2-scrolled .hawk-v2-header-container {
+  height: 68px;
+}
+
+.hawk-v2-scrolled .hawk-v2-header {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  background: rgba(11, 11, 11, 0.96);
+  backdrop-filter: blur(12px);
+}
+
+/* Left: Desktop Navigation */
+.hawk-v2-desktop-nav {
+  display: flex;
+  align-items: center;
+}
+
+.hawk-v2-nav-list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 22px;
+}
+
+.hawk-v2-nav-list li {
+  margin: 0;
+  padding: 0;
+}
+
+.hawk-v2-nav-list a {
+  color: rgba(255, 255, 255, 0.88) !important;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 0;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.hawk-v2-nav-list a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--hawk-gold);
+  transition: width 0.2s ease;
+}
+
+.hawk-v2-nav-list a:hover,
+.hawk-v2-nav-list li.current-menu-item > a,
+.hawk-v2-nav-list li.current_page_item > a {
+  color: var(--hawk-gold) !important;
+}
+
+.hawk-v2-nav-list a:hover::after,
+.hawk-v2-nav-list li.current-menu-item > a::after,
+.hawk-v2-nav-list li.current_page_item > a::after {
+  width: 100%;
+}
+
+/* Center: Brand Logo */
+.hawk-v2-logo-wrap {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.hawk-v2-logo-link {
+  display: flex;
+  align-items: center;
+}
+
+.hawk-v2-logo-img {
+  max-height: 48px;
+  width: auto;
+  display: block;
+  transition: max-height 0.25s ease;
+}
+
+.hawk-v2-scrolled .hawk-v2-logo-img {
+  max-height: 42px;
+}
+
+/* Right: Header Actions */
+.hawk-v2-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.hawk-v2-header-quote-btn {
+  padding: 10px 18px !important;
+  font-size: 11px !important;
+  white-space: nowrap;
+}
+
+/* Mobile Toggle Hamburger */
+.hawk-v2-mobile-toggle {
+  display: none;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 8px;
+  color: var(--hawk-gold);
+}
+
+.hawk-v2-hamburger-box {
+  width: 28px;
+  height: 20px;
+  display: inline-block;
+  position: relative;
+}
+
+.hawk-v2-hamburger-inner,
+.hawk-v2-hamburger-inner::before,
+.hawk-v2-hamburger-inner::after {
+  width: 28px;
+  height: 2.5px;
+  background-color: var(--hawk-gold);
+  border-radius: 2px;
+  position: absolute;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.hawk-v2-hamburger-inner {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hawk-v2-hamburger-inner::before {
+  content: "";
+  top: -8px;
+}
+
+.hawk-v2-hamburger-inner::after {
+  content: "";
+  bottom: -8px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Mobile Drawer Navigation                                            */
+/* ------------------------------------------------------------------ */
+
+.hawk-v2-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.3s ease, opacity 0.3s ease;
+}
+
+body.hawk-v2-drawer-active {
+  overflow: hidden;
+}
+
+body.hawk-v2-drawer-active .hawk-v2-drawer {
+  visibility: visible;
+  opacity: 1;
+}
+
+.hawk-v2-drawer-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+}
+
+.hawk-v2-drawer-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 82%;
+  max-width: 380px;
+  height: 100%;
+  background: var(--hawk-graphite);
+  border-left: 1px solid rgba(230, 194, 0, 0.25);
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+}
+
+body.hawk-v2-drawer-active .hawk-v2-drawer-panel {
+  transform: translateX(0);
+}
+
+.hawk-v2-drawer-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hawk-v2-drawer-logo img {
+  max-height: 40px;
+  width: auto;
+}
+
+.hawk-v2-drawer-close {
+  background: transparent;
+  border: 0;
+  color: var(--hawk-gold);
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.hawk-v2-drawer-nav {
+  flex: 1 1 auto;
+}
+
+.hawk-v2-drawer-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.hawk-v2-drawer-nav-list li {
+  margin: 0 0 16px;
+  padding: 0;
+}
+
+.hawk-v2-drawer-nav-list a {
+  color: var(--hawk-white) !important;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: block;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.hawk-v2-drawer-nav-list a:hover,
+.hawk-v2-drawer-nav-list li.current-menu-item > a {
+  color: var(--hawk-gold) !important;
+}
+
+.hawk-v2-drawer-footer {
+  margin-top: 24px;
+  padding-top: 20px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Homepage Hero                                                      */
+/* ------------------------------------------------------------------ */
+
+.hawk-v2-hero {
+  position: relative;
+  min-height: clamp(560px, 86vh, 900px);
+  background-size: cover;
+  background-position: center 25%;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  padding-top: var(--hawk-header-height);
+  background-color: var(--hawk-black);
+}
+
+.hawk-v2-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(11, 11, 11, 0.94) 0%, rgba(11, 11, 11, 0.82) 46%, rgba(11, 11, 11, 0.2) 100%);
+  z-index: 1;
+}
+
+.hawk-v2-hero-container {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 60px 24px;
+  position: relative;
+  z-index: 2;
+}
+
+.hawk-v2-hero-content {
+  max-width: 660px;
+}
+
+.hawk-v2-hero-badge-wrap {
+  margin-bottom: 20px;
+}
+
+.hawk-v2-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(230, 194, 0, 0.4);
+  border-radius: 999px;
+  color: var(--hawk-gold);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hawk-v2-hero-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--hawk-gold);
+}
+
+.hawk-v2-hero-title {
+  font-family: var(--hawk-display);
+  font-size: clamp(2.8rem, 5.5vw, 4.6rem);
+  font-weight: 700;
+  color: var(--hawk-white) !important;
+  line-height: 1.06;
+  margin: 0 0 20px 0;
+  letter-spacing: 0.01em;
+}
+
+.hawk-v2-hero-desc {
+  font-family: var(--hawk-font);
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  color: rgba(255, 255, 255, 0.82) !important;
+  line-height: 1.7;
+  margin: 0 0 34px 0;
+  max-width: 580px;
+}
+
+.hawk-v2-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Inner Page Banner                                                   */
+/* ------------------------------------------------------------------ */
+
+.hawk-v2-page-banner {
+  position: relative;
+  min-height: clamp(300px, 42vh, 480px);
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  background-color: var(--hawk-black);
+  display: flex;
+  align-items: flex-end;
+  padding-top: calc(var(--hawk-header-height) + 40px);
+  padding-bottom: 48px;
+}
+
+.hawk-v2-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11, 11, 11, 0.55) 0%, rgba(11, 11, 11, 0.9) 100%);
+  z-index: 1;
+}
+
+.hawk-v2-banner-container {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 2;
+}
+
+.hawk-v2-banner-title {
+  font-family: var(--hawk-display);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 700;
+  color: var(--hawk-white) !important;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.hawk-v2-banner-breadcrumbs {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.hawk-v2-banner-breadcrumbs a {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.hawk-v2-banner-breadcrumbs a:hover {
+  color: var(--hawk-gold);
+}
+
+.hawk-v2-breadcrumb-sep {
+  margin: 0 8px;
+  color: var(--hawk-gold);
+}
+
+.hawk-v2-breadcrumb-current {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ------------------------------------------------------------------ */
+/* Clean Content Separation                                           */
+/* ------------------------------------------------------------------ */
+
+.hawk-v2-inner-content {
+  background: var(--hawk-white);
+  position: relative;
+  z-index: 10;
+  padding: 40px 0 80px;
+}
+
+.hawk-v2-entry-content {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Native Footer                                                       */
+/* ------------------------------------------------------------------ */
+
+.hawk-v2-footer {
+  background: var(--hawk-black);
+  border-top: 3px solid var(--hawk-gold);
+  color: rgba(255, 255, 255, 0.8);
+  padding: 80px 0 28px;
+}
+
+.hawk-v2-footer-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.hawk-v2-footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1.2fr;
+  gap: 48px;
+  margin-bottom: 60px;
+}
+
+.hawk-v2-footer-logo {
+  max-height: 48px;
+  width: auto;
+  margin-bottom: 18px;
+  display: block;
+}
+
+.hawk-v2-footer-tagline {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 0 0 24px 0;
+}
+
+.hawk-v2-footer-socials {
+  display: flex;
+  gap: 12px;
+}
+
+.hawk-v2-social-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--hawk-radius);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--hawk-white) !important;
+  font-size: 15px;
+  transition: all 0.2s ease;
+}
+
+.hawk-v2-social-btn:hover {
+  background: var(--hawk-gold);
+  color: var(--hawk-black) !important;
+  border-color: var(--hawk-gold);
+  transform: translateY(-2px);
+}
+
+.hawk-v2-footer-heading {
+  font-family: var(--hawk-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--hawk-white) !important;
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+.hawk-v2-footer-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.hawk-v2-footer-menu li {
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+
+.hawk-v2-footer-menu a {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+  display: inline-block;
+}
+
+.hawk-v2-footer-menu a:hover {
+  color: var(--hawk-gold);
+  padding-left: 4px;
+}
+
+.hawk-v2-contact-entry {
+  margin-bottom: 14px;
+  font-size: 14px;
+}
+
+.hawk-v2-contact-label {
+  display: block;
+  color: var(--hawk-white);
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.hawk-v2-contact-value {
+  display: block;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.hawk-v2-contact-value:hover {
+  color: var(--hawk-gold);
+}
+
+.hawk-v2-footer-hiring {
+  margin-top: 24px;
+}
+
+.hawk-v2-footer-bottom {
+  padding-top: 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: center;
+}
+
+.hawk-v2-copyright {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+  margin: 0;
+}
+
+/* ------------------------------------------------------------------ */
+/* WPBakery Interior Cards & Sections Restyle                         */
 /* ------------------------------------------------------------------ */
 
 .hawk-services-portal,
@@ -291,7 +761,7 @@ body.hawk-v2 .vc_btn3.vc_btn3-style-outline {
 .hawk-clean-portal {
   background: var(--hawk-white) !important;
   font-family: var(--hawk-font) !important;
-  padding: 96px 24px !important;
+  padding: 80px 24px !important;
   min-height: 0 !important;
 }
 
@@ -364,24 +834,14 @@ body.hawk-v2 .vc_btn3.vc_btn3-style-outline {
   background: #fff !important;
   border-radius: 8px !important;
   overflow: hidden;
-}
-
-.hawk-card,
-.hawk-clean-card {
-  transition: transform 0.28s ease;
-}
-
-.hawk-card:hover,
-.hawk-clean-card:hover,
-.hawk-proc-link:hover,
-.hawk-aff-card:hover {
-  transform: translateY(-8px);
+  transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
 }
 
 .hawk-card:hover .hawk-card-frame,
 .hawk-clean-card:hover .hawk-clean-inner,
 .hawk-proc-link:hover .hawk-proc-inner,
 .hawk-aff-card:hover {
+  transform: translateY(-6px);
   border-color: var(--hawk-gold) !important;
   box-shadow: var(--hawk-shadow) !important;
 }
@@ -456,10 +916,7 @@ body.hawk-v2 .vc_btn3.vc_btn3-style-outline {
   gap: 28px !important;
 }
 
-/* ------------------------------------------------------------------ */
-/* Personnel / lists / inner content                                   */
-/* ------------------------------------------------------------------ */
-
+/* Personnel / lists */
 body.hawk-v2 .pix-list {
   list-style: none;
   padding: 0;
@@ -484,37 +941,6 @@ body.hawk-v2 .pix-list li::before {
   background: var(--hawk-gold);
 }
 
-body.hawk-v2 .pix-accordion-btn {
-  background: #fff !important;
-  border: 1px solid var(--hawk-line) !important;
-  color: var(--hawk-black) !important;
-  font-family: var(--hawk-font);
-  font-weight: 600;
-  text-align: left;
-  padding: 16px 18px !important;
-  margin-bottom: 8px;
-  border-radius: var(--hawk-radius);
-}
-
-body.hawk-v2 .wpb_single_image img,
-body.hawk-v2 .vc_single_image-wrapper img {
-  border-radius: 8px;
-}
-
-body.hawk-v2 .pix-box {
-  background: #fff !important;
-  border: 1px solid var(--hawk-line) !important;
-  border-radius: 8px !important;
-  box-shadow: none !important;
-  padding: 24px !important;
-}
-
-body.hawk-v2 .pix-ibox-title,
-body.hawk-v2 .pix-item-title {
-  font-family: var(--hawk-display);
-  color: var(--hawk-black) !important;
-}
-
 /* Final CTA band */
 body.hawk-v2 .vc_custom_1739176079983 {
   background: var(--hawk-graphite) !important;
@@ -531,39 +957,7 @@ body.hawk-v2 .vc_custom_1739176079983 h1 {
   font-size: clamp(2.2rem, 4vw, 3.4rem);
 }
 
-/* ------------------------------------------------------------------ */
-/* Footer                                                              */
-/* ------------------------------------------------------------------ */
-
-body.hawk-v2 .pix-footer {
-  background: var(--hawk-black) !important;
-  color: rgba(255, 255, 255, 0.78);
-  border-top: 3px solid var(--hawk-gold);
-  padding: 24px 0 12px;
-}
-
-body.hawk-v2 .pix-footer h2,
-body.hawk-v2 .pix-footer h3,
-body.hawk-v2 .pix-footer h4,
-body.hawk-v2 .pix-footer p,
-body.hawk-v2 .pix-footer li,
-body.hawk-v2 .pix-footer a,
-body.hawk-v2 .pix-footer .widget {
-  color: rgba(255, 255, 255, 0.84) !important;
-}
-
-body.hawk-v2 .pix-footer a:hover {
-  color: var(--hawk-gold) !important;
-}
-
-body.hawk-v2 .footer-created_by {
-  display: none !important;
-}
-
-/* ------------------------------------------------------------------ */
-/* Forms / contact                                                     */
-/* ------------------------------------------------------------------ */
-
+/* Contact form */
 body.hawk-v2 .wpcf7 input[type="text"],
 body.hawk-v2 .wpcf7 input[type="email"],
 body.hawk-v2 .wpcf7 input[type="tel"],
@@ -596,23 +990,9 @@ body.hawk-v2 .pix-contact-form {
   max-width: 100% !important;
 }
 
-body.page-id-860 .vc_custom_heading {
-  font-size: clamp(2rem, 4vw, 3rem);
-}
-
 /* ------------------------------------------------------------------ */
-/* Motion                                                              */
+/* Motion & Accessibility                                             */
 /* ------------------------------------------------------------------ */
-
-body.hawk-v2 .hawk-card,
-body.hawk-v2 .hawk-clean-card,
-body.hawk-v2 .hawk-proc-link,
-body.hawk-v2 .hawk-aff-card,
-body.hawk-v2 .vc_btn3,
-body.hawk-v2 .pix-button,
-body.hawk-v2 .hawk-v2-header-cta {
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.2s ease;
-}
 
 @media (prefers-reduced-motion: reduce) {
   body.hawk-v2 *,
@@ -622,46 +1002,83 @@ body.hawk-v2 .hawk-v2-header-cta {
     transition: none !important;
   }
 
-  body.hawk-v2 .hawk-card:hover,
-  body.hawk-v2 .hawk-clean-card:hover,
-  body.hawk-v2 .hawk-proc-link:hover,
-  body.hawk-v2 .hawk-aff-card:hover {
-    transform: none;
+  .hawk-card:hover .hawk-card-frame,
+  .hawk-clean-card:hover .hawk-clean-inner,
+  .hawk-proc-link:hover .hawk-proc-inner,
+  .hawk-aff-card:hover {
+    transform: none !important;
   }
 }
 
 /* ------------------------------------------------------------------ */
-/* Responsive                                                          */
+/* Responsive Breakpoints                                             */
 /* ------------------------------------------------------------------ */
 
-@media (max-width: 1024px) {
-  body.hawk-v2 .hawk-v2-header-cta-item {
+@media (max-width: 1080px) {
+  .hawk-v2-desktop-nav {
     display: none;
   }
 
-  body.hawk-v2 .custom-header {
-    min-height: 34vh;
-    padding: 7rem 0 2.5rem;
+  .hawk-v2-mobile-toggle {
+    display: inline-flex;
+  }
+
+  .hawk-v2-footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+
+  .hawk-v2-footer-brand {
+    grid-column: span 2;
   }
 }
 
 @media (max-width: 768px) {
-  body.hawk-v2 .pix-header.menu-aroundblock {
+  :root {
+    --hawk-header-height: 72px;
+  }
+
+  .hawk-v2-header-quote-btn {
     display: none;
   }
 
-  body.hawk-v2 .custom-header .pix-h1 {
-    font-size: 2.2rem;
+  .hawk-v2-hero {
+    min-height: 520px;
+    padding-top: var(--hawk-header-height);
+  }
+
+  .hawk-v2-hero-overlay {
+    background: rgba(11, 11, 11, 0.88);
+  }
+
+  .hawk-v2-hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hawk-v2-hero-actions .hawk-v2-btn,
+  .hawk-v2-hero-actions .hawk-v2-btn-outline {
+    width: 100%;
+  }
+
+  .hawk-v2-page-banner {
+    min-height: 240px;
+    padding-bottom: 32px;
+  }
+
+  .hawk-v2-footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .hawk-v2-footer-brand {
+    grid-column: span 1;
   }
 
   .hawk-services-portal,
   .hawk-process-portal,
   .hawk-affiliates-section,
   .hawk-clean-portal {
-    padding: 64px 16px !important;
-  }
-
-  body.hawk-v2 .pix-contact-form {
-    padding: 20px !important;
+    padding: 60px 16px !important;
   }
 }
