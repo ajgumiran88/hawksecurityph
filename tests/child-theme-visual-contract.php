@@ -57,7 +57,9 @@ $checks = array(
 	'hero light overlay treatment'       => array( 'premium_css', 'rgba(247, 248, 246, 0.96)' ),
 	'normal-proportion hero type'        => array( 'premium_css', 'font-size: clamp(2.75rem, 4.2vw, 4rem);' ),
 	'compact card density'               => array( 'premium_css', 'min-height: 0 !important;' ),
-	'premium refactor version'           => array( 'functions', "HAWK_CHILD_VERSION', '1.0.1" ),
+	'premium refactor version'           => array( 'functions', "HAWK_CHILD_VERSION', '1.0.2" ),
+	'footer keeps a single HUD visitor counter' => array( 'footer', 'hawk-v2-footer-counter' ),
+	'visitor increment is request-guarded' => array( 'functions', 'function hawk_maybe_increment_visitor_count' ),
 	'personnel filter runs after WPBakery shortcodes' => array( 'functions', "add_filter( 'the_content', 'hawk_enhance_homepage_personnel', 20" ),
 	'personnel showcase template is shipped' => array( 'personnel', 'hawk-personnel-portal' ),
 	'navigation uses solid HAWK navy token' => array( 'fx_css', '--hawk-nav-solid: #17212A;' ),
@@ -147,6 +149,18 @@ if ( false !== strpos( $source['hero'], '/wp-content/uploads/2025/02/13.jpg' ) )
 
 if ( false !== strpos( $source['banner'], 'background-image:' ) && false !== strpos( $source['banner'], 'hawk-v2-banner-logo-img' ) ) {
 	$failures[] = 'banner crest is painted twice (CSS background-image plus img)';
+}
+
+if ( false !== strpos( $source['footer'], 'hawk-v2-footer-stats-pill' ) ) {
+	$failures[] = 'footer still shows a duplicate visitor pill';
+}
+
+if ( substr_count( $source['footer'], 'hawk_get_visitor_count()' ) !== 1 ) {
+	$failures[] = 'visitor count is still rendered more than once in the footer';
+}
+
+if ( preg_match( '/function hawk_get_visitor_count\s*\([^)]*\)\s*\{[^}]*\$count\+\+/s', $source['functions'] ) ) {
+	$failures[] = 'visitor getter still increments the count';
 }
 
 foreach ( array( '#86efac', '#22C55E', '#22c55e' ) as $off_palette_color ) {

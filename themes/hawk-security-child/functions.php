@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'HAWK_CHILD_VERSION', '1.0.1' );
+define( 'HAWK_CHILD_VERSION', '1.0.2' );
 define( 'HAWK_CHILD_DIR', get_stylesheet_directory() );
 define( 'HAWK_CHILD_URI', get_stylesheet_directory_uri() );
 
@@ -385,31 +385,51 @@ function hawk_route_about_page_template( $template ) {
 }
 add_filter( 'template_include', 'hawk_route_about_page_template', 99 );
 /**
- * Track unique visits and retrieve the current total visitor count.
+ * Read the stored unique-visit count. Does not increment.
  *
  * @return int Total visitor count.
  */
 function hawk_get_visitor_count() {
 	$count = get_option( 'hawk_total_visitors' );
-	if ( false === $count || ! is_numeric( $count ) || $count < 148290 ) {
+	if ( false === $count || ! is_numeric( $count ) || (int) $count < 148290 ) {
 		$count = 148290;
-		update_option( 'hawk_total_visitors', $count );
-	}
-
-	// Increment only on front-end GET requests for non-logged-in visitors or unique sessions
-	if ( ! is_admin() && ! wp_doing_ajax() && ! ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
-		if ( ! isset( $_COOKIE['hawk_visitor_logged'] ) ) {
-			$count++;
-			update_option( 'hawk_total_visitors', $count );
-			// Set 24-hour cookie to avoid inflating count on page refreshes
-			if ( ! headers_sent() ) {
-				setcookie( 'hawk_visitor_logged', '1', time() + DAY_IN_SECONDS, COOKIEPATH ? COOKIEPATH : '/', COOKIE_DOMAIN );
-			}
-		}
+		update_option( 'hawk_total_visitors', (int) $count, false );
 	}
 
 	return (int) $count;
 }
+
+/**
+ * Count a front-end visit once per request and at most once per browser per day.
+ */
+function hawk_maybe_increment_visitor_count() {
+	static $counted = false;
+	if ( $counted ) {
+		return;
+	}
+	$counted = true;
+
+	if ( is_admin() || wp_doing_ajax() || wp_doing_cron() ) {
+		return;
+	}
+	if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
+		return;
+	}
+	if ( isset( $_SERVER['REQUEST_METHOD'] ) && 'GET' !== $_SERVER['REQUEST_METHOD'] ) {
+		return;
+	}
+	if ( isset( $_COOKIE['hawk_visitor_logged'] ) ) {
+		return;
+	}
+
+	$count = hawk_get_visitor_count() + 1;
+	update_option( 'hawk_total_visitors', $count, false );
+
+	if ( ! headers_sent() ) {
+		setcookie( 'hawk_visitor_logged', '1', time() + DAY_IN_SECONDS, COOKIEPATH ? COOKIEPATH : '/', COOKIE_DOMAIN );
+	}
+}
+add_action( 'init', 'hawk_maybe_increment_visitor_count', 20 );
 
 /**
  * Render individual digital digit blocks for the visitor counter.

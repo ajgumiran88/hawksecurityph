@@ -73,17 +73,12 @@
 
 			</div>
 
-			<!-- Bottom Copyright Bar & Stats -->
+			<!-- Bottom Copyright Bar -->
 			<div class="hawk-v2-footer-bottom">
 				<div class="hawk-v2-footer-bottom-wrap">
 					<p class="hawk-v2-copyright">
 						&copy; <?php echo esc_html( date( 'Y' ) ); ?> <?php esc_html_e( 'HAWK SECURITY SERVICE, INC. All Rights Reserved.', 'hawk-security-child' ); ?>
 					</p>
-					<div class="hawk-v2-footer-stats-pill">
-						<span class="hawk-v2-pulse-dot" aria-hidden="true"></span>
-						<span class="hawk-v2-stat-pill-label"><?php esc_html_e( 'Total Visitors:', 'hawk-security-child' ); ?></span>
-						<span class="hawk-v2-stat-pill-num"><?php echo esc_html( number_format_i18n( hawk_get_visitor_count() ) ); ?></span>
-					</div>
 				</div>
 			</div>
 
