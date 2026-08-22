@@ -13,13 +13,24 @@ $hero_bg_url = home_url( '/wp-content/uploads/2026/01/Gemini_Generated_Image_d6f
 ?>
 
 <section class="hawk-v2-hero">
+	<!-- Full-bleed background media layer -->
+	<div class="hawk-v2-hero-media" style="background-image: url('<?php echo esc_url( $hero_bg_url ); ?>');" aria-hidden="true">
+		<div class="hawk-v2-hero-media-backdrop"></div>
+		<div class="hawk-v2-hero-media-grid"></div>
+	</div>
+
+	<!-- Atmospheric lighting and scanlines -->
 	<div class="hawk-v2-hero-atmosphere" aria-hidden="true">
 		<div class="hawk-v2-hero-grid"></div>
 		<div class="hawk-v2-hero-orb hawk-v2-hero-orb--gold"></div>
 		<div class="hawk-v2-hero-orb hawk-v2-hero-orb--steel"></div>
 		<div class="hawk-v2-hero-scan"></div>
 	</div>
+
+	<!-- High-contrast occlusion gradient overlay -->
 	<div class="hawk-v2-hero-overlay"></div>
+
+	<!-- Viewport-maximized container -->
 	<div class="hawk-v2-hero-container">
 		<div class="hawk-v2-hero-content">
 			<div class="hawk-v2-hero-badge-wrap">
@@ -65,15 +76,33 @@ $hero_bg_url = home_url( '/wp-content/uploads/2026/01/Gemini_Generated_Image_d6f
 			</div>
 		</div>
 
-		<div class="hawk-v2-hero-media-frame">
-			<div class="hawk-v2-hero-media" style="background-image: url('<?php echo esc_url( $hero_bg_url ); ?>');" aria-hidden="true"></div>
-			<div class="hawk-v2-hero-hud">
-				<span class="hawk-v2-hero-hud-chip">
+		<!-- Right Side: HUD Telemetry Badges (overlaid on background vista) -->
+		<div class="hawk-v2-hero-hud-column" aria-hidden="true">
+			<div class="hawk-v2-hero-hud-card">
+				<div class="hawk-v2-hero-hud-header">
 					<span class="hawk-v2-pulse-dot"></span>
-					<?php esc_html_e( 'Field operations', 'hawk-security-child' ); ?>
-				</span>
-				<span class="hawk-v2-hero-hud-meta"><?php esc_html_e( 'Active watch', 'hawk-security-child' ); ?></span>
+					<span class="hawk-v2-hero-hud-status"><?php esc_html_e( '24/7 Field Operations Active', 'hawk-security-child' ); ?></span>
+				</div>
+				<div class="hawk-v2-hero-hud-body">
+					<div class="hawk-v2-hero-hud-item">
+						<span class="hawk-v2-hero-hud-label"><?php esc_html_e( 'Force Readiness', 'hawk-security-child' ); ?></span>
+						<span class="hawk-v2-hero-hud-val"><?php esc_html_e( '100% Deployed & Monitored', 'hawk-security-child' ); ?></span>
+					</div>
+					<div class="hawk-v2-hero-hud-item">
+						<span class="hawk-v2-hero-hud-label"><?php esc_html_e( 'Compliance & Licensing', 'hawk-security-child' ); ?></span>
+						<span class="hawk-v2-hero-hud-val"><?php esc_html_e( 'PNP-SOSIA & PADPAO Certified', 'hawk-security-child' ); ?></span>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
+
+	<!-- Scroll to Explore cue -->
+	<div class="hawk-v2-hero-scroll-cue" aria-hidden="true">
+		<span class="hawk-v2-scroll-text"><?php esc_html_e( 'Scroll to explore', 'hawk-security-child' ); ?></span>
+		<div class="hawk-v2-scroll-indicator">
+			<div class="hawk-v2-scroll-pip"></div>
+		</div>
+	</div>
 </section>
+
