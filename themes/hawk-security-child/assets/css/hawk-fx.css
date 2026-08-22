@@ -1050,46 +1050,102 @@ body.hawk-v2 .hawk-v2-banner-media {
 
 	body.hawk-v2 {
 		--hawk-header-offset: 8px;
+		--hawk-header-bar: 56px;
 	}
 
 	body.hawk-v2 .hawk-v2-hero {
-		min-height: 0;
-		padding-top: calc(var(--hawk-header-height) + 20px);
+		min-height: 100svh;
+		min-height: 100vh;
+		padding-top: calc(var(--hawk-header-height) + 16px);
+		padding-bottom: 24px;
+		justify-content: center;
 	}
 
 	body.hawk-v2 .hawk-v2-hero-container {
 		grid-template-columns: 1fr;
-		min-height: 0;
-		padding-top: 24px;
-		padding-bottom: 48px;
+		min-height: auto;
+		padding: 16px 20px 20px;
+		gap: 0;
+	}
+
+	body.hawk-v2 .hawk-v2-hero-content {
+		max-width: 100%;
 	}
 
 	body.hawk-v2 .hawk-v2-hero-title {
 		max-width: none;
-		font-size: clamp(1.75rem, 7.5vw, 2.25rem) !important;
+		font-size: clamp(1.85rem, 8vw, 2.45rem) !important;
+		line-height: 1.12 !important;
+		margin-bottom: 14px;
+	}
+
+	body.hawk-v2 .hawk-v2-hero-desc {
+		font-size: 13.5px;
+		line-height: 1.55;
+		margin-bottom: 20px;
+		max-width: 100%;
 	}
 
 	body.hawk-v2 .hawk-v2-hero-actions {
+		display: flex;
 		align-items: center;
 		flex-flow: row nowrap;
 		gap: 10px;
+		width: 100%;
 	}
 
 	body.hawk-v2 .hawk-v2-hero-actions .hawk-v2-btn,
 	body.hawk-v2 .hawk-v2-hero-actions .hawk-v2-btn-outline {
 		flex: 1 1 0;
-		width: auto;
 		min-width: 0;
+		min-height: 44px !important;
+		padding: 10px 14px !important;
+		font-size: 11px !important;
+		letter-spacing: 0.04em !important;
+		text-align: center;
+		justify-content: center;
+	}
+
+	body.hawk-v2 .hawk-v2-hero-actions .hawk-v2-hero-btn-primary {
+		flex: 1.3 1 0;
+	}
+
+	body.hawk-v2 .hawk-v2-hero-actions .hawk-v2-hero-btn-secondary {
+		flex: 0.85 1 0;
+	}
+
+	body.hawk-v2 .hawk-v2-hero-stats {
+		grid-template-columns: repeat(3, 1fr);
+		gap: 10px;
+		margin-top: 24px;
+		padding-top: 16px;
+	}
+
+	body.hawk-v2 .hawk-v2-hero-stat-value {
+		font-size: 1.15rem;
+	}
+
+	body.hawk-v2 .hawk-v2-hero-stat-label {
+		font-size: 9px;
+	}
+
+	/* Hide secondary HUD telemetry column on mobile so hero fits viewport cleanly */
+	body.hawk-v2 .hawk-v2-hero-hud-column {
+		display: none !important;
+	}
+
+	body.hawk-v2 .hawk-v2-hero-scroll-cue {
+		display: none !important;
 	}
 
 	body.hawk-v2 .hawk-v2-hero-media {
 		aspect-ratio: 16 / 9;
 		max-height: none;
 		min-height: 0;
-	}
-
-	body.hawk-v2 .hawk-v2-hero-hud {
-		flex-wrap: nowrap;
+		position: absolute !important;
+		inset: 0 !important;
+		width: 100% !important;
+		height: 100% !important;
 	}
 
 	body.hawk-v2 .hawk-v2-page-banner {
@@ -1099,97 +1155,74 @@ body.hawk-v2 .hawk-v2-banner-media {
 
 @media (max-width: 640px) {
 	body.hawk-v2 {
-		--hawk-header-bar: 58px;
+		--hawk-header-bar: 52px;
 	}
 
 	body.hawk-v2 .hawk-v2-header-shell {
-		border-radius: 14px;
+		border-radius: 12px;
 	}
 
 	body.hawk-v2 .hawk-v2-header-container {
-		padding-inline: 12px;
+		padding-inline: 10px;
+	}
+
+	body.hawk-v2 .hawk-v2-hero {
+		min-height: 100svh;
+		min-height: 100vh;
+		padding-top: calc(var(--hawk-header-height) + 12px);
+		padding-bottom: 20px;
 	}
 
 	body.hawk-v2 .hawk-v2-hero-container {
-		grid-template-columns: minmax(0, 1fr);
-		gap: 20px;
-		padding: 18px 20px 30px;
+		padding: 10px 16px 16px;
 	}
 
-	body.hawk-v2 .hawk-v2-hero-content {
-		width: 100%;
-		max-width: none;
+	body.hawk-v2 .hawk-v2-hero-badge-wrap {
+		margin-bottom: 12px;
 	}
 
 	body.hawk-v2 .hawk-v2-hero-badge {
-		max-width: 100%;
-		padding: 7px 8px;
-		font-size: 8px;
-		letter-spacing: 0.1em;
+		padding: 5px 10px;
+		font-size: 8.5px;
+		letter-spacing: 0.08em;
 	}
 
 	body.hawk-v2 .hawk-v2-hero-title {
-		font-size: clamp(1.875rem, 8.2vw, 2.25rem) !important;
-		line-height: 1.08 !important;
+		font-size: clamp(1.65rem, 7.8vw, 2.15rem) !important;
+		line-height: 1.1 !important;
+		margin-bottom: 12px;
 	}
 
 	body.hawk-v2 .hawk-v2-hero-desc {
-		margin-bottom: 18px;
-		font-size: 0.9375rem;
-		line-height: 1.55;
+		font-size: 12.5px;
+		line-height: 1.5;
+		margin-bottom: 16px;
 	}
 
 	body.hawk-v2 .hawk-v2-hero-actions {
-		align-items: center;
-		flex-direction: row;
-		flex-wrap: nowrap;
 		gap: 8px;
 	}
 
 	body.hawk-v2 .hawk-v2-hero-actions .hawk-v2-btn,
 	body.hawk-v2 .hawk-v2-hero-actions .hawk-v2-btn-outline {
-		flex: 1 1 0;
-		width: auto;
-		min-width: 0;
-		min-height: 44px !important;
-		padding: 9px 10px !important;
-		font-size: clamp(0.5rem, 2.35vw, 0.625rem) !important;
-		white-space: nowrap;
-	}
-
-	body.hawk-v2 .hawk-v2-hero-actions .hawk-v2-hero-btn-primary {
-		flex-grow: 1.35;
-	}
-
-	body.hawk-v2 .hawk-v2-hero-actions .hawk-v2-hero-btn-secondary {
-		flex-grow: 0.65;
+		min-height: 40px !important;
+		padding: 8px 10px !important;
+		font-size: 10px !important;
 	}
 
 	body.hawk-v2 .hawk-v2-hero-stats {
-		grid-template-columns: repeat(3, minmax(0, 1fr));
 		gap: 6px;
-		margin-top: 22px;
-		padding-top: 16px;
+		margin-top: 18px;
+		padding-top: 14px;
 	}
 
 	body.hawk-v2 .hawk-v2-hero-stat-value {
-		font-size: 0.95rem;
+		font-size: 1rem;
 	}
 
-	body.hawk-v2 .hawk-v2-hero-hud {
-		flex-direction: row;
-		align-items: center;
-		flex-wrap: nowrap;
-		gap: 8px;
-		margin-top: 10px;
-	}
-
-	body.hawk-v2 .hawk-v2-hero-media {
-		aspect-ratio: 16 / 9;
-		min-height: 0;
-		border-radius: 10px;
-		background-position: 68% 24% !important;
-		background-size: cover !important;
+	body.hawk-v2 .hawk-v2-hero-stat-label {
+		font-size: 8px;
+		letter-spacing: 0.1em;
 	}
 }
 
@@ -1649,4 +1682,376 @@ body.hawk-v2 .hawk-v2-cta-check {
 		padding: 12px 16px !important;
 	}
 }
+
+/* Our Personnel Portal -------------------------------------------------- */
+
+.hawk-personnel-portal {
+	background: #ffffff;
+	padding: 90px 24px 100px;
+	font-family: 'Inter', sans-serif;
+	position: relative;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+
+.hawk-personnel-portal::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background-image: radial-gradient(#e2e8f0 1.2px, transparent 0);
+	background-size: 32px 32px;
+	opacity: 0.6;
+	z-index: 0;
+	pointer-events: none;
+}
+
+.hawk-personnel-container {
+	width: 100%;
+	max-width: 1240px;
+	margin: 0 auto;
+	position: relative;
+	z-index: 1;
+}
+
+.hawk-personnel-header {
+	text-align: center;
+	margin-bottom: 56px;
+}
+
+.hawk-personnel-badge-cluster {
+	margin-bottom: 20px;
+}
+
+.hawk-personnel-grid {
+	display: grid;
+	grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+	gap: clamp(32px, 4.5vw, 60px);
+	align-items: center;
+}
+
+/* Features List Column */
+.hawk-personnel-features {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+.hawk-feature-card {
+	display: flex;
+	align-items: flex-start;
+	gap: 16px;
+	padding: 18px 20px;
+	border: 1px solid #e2e8f0;
+	border-radius: 12px;
+	background: #ffffff;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+	transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.hawk-feature-card:hover {
+	transform: translateX(6px);
+	border-color: #0e161e;
+	box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+}
+
+.hawk-feature-icon {
+	flex-shrink: 0;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	border-radius: 10px;
+	background: rgba(232, 198, 74, 0.12);
+	border: 1px solid rgba(232, 198, 74, 0.35);
+	color: #936f0a;
+	transition: all 0.3s ease;
+}
+
+.hawk-feature-card:hover .hawk-feature-icon {
+	background: #17212a;
+	color: var(--hawk-gold);
+	border-color: var(--hawk-gold);
+}
+
+.hawk-feature-body h3 {
+	font-family: 'Orbitron', 'Plus Jakarta Sans', sans-serif;
+	font-size: 14.5px;
+	font-weight: 700;
+	color: #0f172a;
+	margin: 0 0 4px;
+	line-height: 1.35;
+	letter-spacing: -0.01em;
+}
+
+.hawk-feature-body p {
+	font-size: 13px;
+	color: #64748b;
+	line-height: 1.6;
+	margin: 0;
+}
+
+/* Visual Showcase Column */
+.hawk-personnel-visual {
+	position: relative;
+}
+
+.hawk-personnel-frame {
+	position: relative;
+	background: #ffffff;
+	border: 1px solid #e2e8f0;
+	border-radius: 16px;
+	padding: 12px;
+	box-shadow: 0 24px 60px rgba(0, 0, 0, 0.08);
+	overflow: hidden;
+	transition: all 0.4s ease;
+}
+
+.hawk-personnel-frame:hover {
+	box-shadow: 0 30px 70px rgba(0, 0, 0, 0.12);
+}
+
+.hawk-personnel-slider {
+	position: relative;
+	width: 100%;
+	height: 480px;
+	border-radius: 12px;
+	overflow: hidden;
+	background: #070c12;
+}
+
+.hawk-slider-track {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.hawk-slide {
+	position: absolute;
+	inset: 0;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+	transform: scale(1.04);
+	z-index: 1;
+}
+
+.hawk-slide.active {
+	opacity: 1;
+	visibility: visible;
+	transform: scale(1);
+	z-index: 2;
+}
+
+.hawk-slide img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center 25%;
+	display: block;
+}
+
+.hawk-personnel-overlay {
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(180deg, rgba(7, 12, 18, 0.15) 0%, transparent 35%, rgba(7, 12, 18, 0.84) 100%);
+	pointer-events: none;
+	z-index: 3;
+}
+
+/* Slider Nav Controls */
+.hawk-slider-nav {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	background: rgba(7, 12, 18, 0.65);
+	border: 1px solid rgba(232, 198, 74, 0.35);
+	color: #ffffff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	z-index: 5;
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	transition: all 0.25s ease;
+	padding: 0;
+}
+
+.hawk-slider-prev {
+	left: 14px;
+}
+
+.hawk-slider-next {
+	right: 14px;
+}
+
+.hawk-slider-nav:hover {
+	background: var(--hawk-gold);
+	color: #070c12;
+	border-color: var(--hawk-gold);
+	transform: translateY(-50%) scale(1.08);
+	box-shadow: 0 4px 16px rgba(232, 198, 74, 0.4);
+}
+
+/* Slider Pagination Dots */
+.hawk-slider-dots {
+	position: absolute;
+	bottom: 105px;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	z-index: 5;
+	padding: 4px 10px;
+	border-radius: 999px;
+	background: rgba(7, 12, 18, 0.55);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hawk-dot {
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.4);
+	border: none;
+	cursor: pointer;
+	padding: 0;
+	transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.hawk-dot.active {
+	background: var(--hawk-gold);
+	width: 20px;
+	border-radius: 999px;
+	box-shadow: 0 0 8px rgba(232, 198, 74, 0.6);
+}
+
+/* Top Floating Badge on Visual */
+.hawk-personnel-badge-top {
+	position: absolute;
+	top: 26px;
+	left: 26px;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 6px 14px;
+	border-radius: 999px;
+	background: rgba(8, 14, 20, 0.75);
+	border: 1px solid rgba(232, 198, 74, 0.35);
+	color: #ffffff;
+	font-family: 'Orbitron', sans-serif;
+	font-size: 9.5px;
+	font-weight: 700;
+	letter-spacing: 0.12em;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+}
+
+/* Bottom Floating Stat Card on Visual */
+.hawk-personnel-stat-card {
+	position: absolute;
+	bottom: 24px;
+	left: 24px;
+	right: 24px;
+	padding: 16px 20px;
+	border-radius: 12px;
+	background: rgba(7, 12, 18, 0.82);
+	border: 1px solid rgba(232, 198, 74, 0.25);
+	box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+}
+
+.hawk-stat-header {
+	font-family: 'Orbitron', sans-serif;
+	font-size: 9px;
+	font-weight: 700;
+	letter-spacing: 0.14em;
+	color: var(--hawk-gold);
+	margin-bottom: 10px;
+	padding-bottom: 8px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hawk-stat-row {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 12px;
+	text-align: center;
+}
+
+.hawk-stat-num {
+	display: block;
+	font-family: 'Orbitron', 'Syne', sans-serif;
+	font-size: 1.15rem;
+	font-weight: 800;
+	color: #ffffff;
+	line-height: 1.1;
+}
+
+.hawk-stat-lbl {
+	display: block;
+	font-size: 9.5px;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	color: rgba(244, 247, 245, 0.65);
+	margin-top: 2px;
+}
+
+/* Responsive Rules for Personnel Portal */
+@media (max-width: 1024px) {
+	.hawk-personnel-grid {
+		grid-template-columns: 1fr;
+		gap: 36px;
+	}
+
+	.hawk-personnel-slider {
+		height: 400px;
+	}
+}
+
+@media (max-width: 640px) {
+	.hawk-personnel-portal {
+		padding: 60px 16px 70px;
+	}
+
+	.hawk-feature-card {
+		padding: 14px 16px;
+	}
+
+	.hawk-feature-body h3 {
+		font-size: 13.5px;
+	}
+
+	.hawk-feature-body p {
+		font-size: 12px;
+	}
+
+	.hawk-personnel-slider {
+		height: 320px;
+	}
+
+	.hawk-slider-dots {
+		bottom: 95px;
+	}
+
+	.hawk-slider-nav {
+		width: 32px;
+		height: 32px;
+	}
+
+	.hawk-personnel-stat-card {
+		position: static;
+		margin-top: 14px;
+	}
+}
+
 

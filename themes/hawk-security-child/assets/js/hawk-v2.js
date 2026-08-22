@@ -194,10 +194,127 @@
     });
   }
 
+  /**
+   * Initializes the tactical image slider for the Our Personnel section.
+   */
+  function initPersonnelSlider() {
+    var slider = document.getElementById("hawkPersonnelSlider");
+    if (!slider) {
+      return;
+    }
+
+    var slides = slider.querySelectorAll(".hawk-slide");
+    var dots = slider.querySelectorAll(".hawk-dot");
+    var prevBtn = slider.querySelector(".hawk-slider-prev");
+    var nextBtn = slider.querySelector(".hawk-slider-next");
+
+    if (!slides.length) {
+      return;
+    }
+
+    var currentIndex = 0;
+    var timer = null;
+    var interval = parseInt(slider.getAttribute("data-interval"), 10) || 4500;
+
+    function goToSlide(index) {
+      if (index < 0) {
+        index = slides.length - 1;
+      } else if (index >= slides.length) {
+        index = 0;
+      }
+
+      currentIndex = index;
+
+      slides.forEach(function (slide, idx) {
+        if (idx === currentIndex) {
+          slide.classList.add("active");
+        } else {
+          slide.classList.remove("active");
+        }
+      });
+
+      dots.forEach(function (dot, idx) {
+        if (idx === currentIndex) {
+          dot.classList.add("active");
+          dot.setAttribute("aria-current", "true");
+        } else {
+          dot.classList.remove("active");
+          dot.removeAttribute("aria-current");
+        }
+      });
+    }
+
+    function startAutoPlay() {
+      stopAutoPlay();
+      timer = window.setInterval(function () {
+        goToSlide(currentIndex + 1);
+      }, interval);
+    }
+
+    function stopAutoPlay() {
+      if (timer) {
+        window.clearInterval(timer);
+        timer = null;
+      }
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        goToSlide(currentIndex - 1);
+        startAutoPlay();
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        goToSlide(currentIndex + 1);
+        startAutoPlay();
+      });
+    }
+
+    dots.forEach(function (dot) {
+      dot.addEventListener("click", function (e) {
+        e.preventDefault();
+        var idx = parseInt(dot.getAttribute("data-index"), 10);
+        if (!isNaN(idx)) {
+          goToSlide(idx);
+          startAutoPlay();
+        }
+      });
+    });
+
+    slider.addEventListener("mouseenter", stopAutoPlay);
+    slider.addEventListener("mouseleave", startAutoPlay);
+
+    // Touch swipe support for mobile devices
+    var touchStartX = 0;
+    var touchEndX = 0;
+    slider.addEventListener("touchstart", function (e) {
+      touchStartX = e.changedTouches[0].screenX;
+      stopAutoPlay();
+    }, { passive: true });
+
+    slider.addEventListener("touchend", function (e) {
+      touchEndX = e.changedTouches[0].screenX;
+      if (touchStartX - touchEndX > 45) {
+        goToSlide(currentIndex + 1);
+      } else if (touchEndX - touchStartX > 45) {
+        goToSlide(currentIndex - 1);
+      }
+      startAutoPlay();
+    }, { passive: true });
+
+    goToSlide(0);
+    startAutoPlay();
+  }
+
   onReady(function () {
     document.documentElement.classList.add("hawk-v2-js");
     initMobileDrawer();
     initScrollHeader();
     softenLabels();
+    initPersonnelSlider();
   });
 })();

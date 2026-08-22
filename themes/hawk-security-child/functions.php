@@ -248,7 +248,7 @@ function hawk_render_fallback_nav( $args = array() ) {
 }
 
 /**
- * Strip Revolution Slider shortcode and raw module blocks from the homepage content.
+ * Strip Revolution Slider & SmartSlider shortcodes and raw module blocks from the homepage content.
  *
  * @param string $content Post content.
  * @return string Filtered post content.
@@ -259,6 +259,8 @@ function hawk_strip_homepage_slider( $content ) {
 		$content = preg_replace( '/\[rev_slider\b[^\]]*\]/i', '', $content );
 		// Strip [slider-revolution ...] shortcodes
 		$content = preg_replace( '/\[slider-revolution\b[^\]]*\]/i', '', $content );
+		// Strip [smartslider3 ...] shortcodes
+		$content = preg_replace( '/\[smartslider3\b[^\]]*\]/i', '', $content );
 		// Strip <sr7-module...>...</sr7-module> tags and inner content
 		$content = preg_replace( '/<sr7-module\b[^>]*>.*?<\/sr7-module>/is', '', $content );
 		// Strip Revolution Slider initialization scripts
@@ -267,6 +269,21 @@ function hawk_strip_homepage_slider( $content ) {
 	}
 	return $content;
 }
+add_filter( 'the_content', 'hawk_strip_homepage_slider', 1 );
+
+/**
+ * Dequeue legacy sliders on homepage.
+ */
+function hawk_dequeue_unwanted_sliders() {
+	if ( is_front_page() || is_page_template( 'page-home.php' ) ) {
+		wp_dequeue_style( 'rs-plugin-settings' );
+		wp_dequeue_style( 'smartslider3' );
+		wp_dequeue_script( 'revmin' );
+		wp_dequeue_script( 'tp-tools' );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'hawk_dequeue_unwanted_sliders', 100 );
+
 /**
  * Render executive command CTA section in place of legacy dull CTA block.
  *
