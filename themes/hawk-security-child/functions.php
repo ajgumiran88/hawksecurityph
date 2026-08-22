@@ -285,6 +285,35 @@ function hawk_dequeue_unwanted_sliders() {
 add_action( 'wp_enqueue_scripts', 'hawk_dequeue_unwanted_sliders', 100 );
 
 /**
+ * Render executive personnel tactical showcase in place of legacy unstyled personnel block.
+ *
+ * @param string $content Post content.
+ * @return string Filtered post content.
+ */
+function hawk_enhance_homepage_personnel( $content ) {
+	if ( is_front_page() || is_page_template( 'page-home.php' ) ) {
+		if ( false !== strpos( $content, 'Our Personnel' ) && false === strpos( $content, 'hawk-personnel-portal' ) ) {
+			ob_start();
+			get_template_part( 'template-parts/personnel-section' );
+			$personnel_html = ob_get_clean();
+
+			// Replace the WPBakery row containing the legacy Our Personnel section
+			$pattern = '/<div[^>]*class="[^"]*vc_custom_1769396010111[^"]*"[^>]*>.*?<\/div>\s*<\/div>\s*<\/div>\s*<\/div>\s*<\/div>\s*<div class="vc_row-full-width vc_clearfix"><\/div>/is';
+			if ( preg_match( $pattern, $content ) ) {
+				$content = preg_replace( $pattern, $personnel_html, $content );
+			} else {
+				$pattern2 = '/<div[^>]*class="[^"]*vc_row[^"]*"[^>]*>(?:(?!<div[^>]*class="[^"]*vc_row).)*?Our Personnel.*?<\/div>\s*<div class="vc_row-full-width vc_clearfix"><\/div>/is';
+				if ( preg_match( $pattern2, $content ) ) {
+					$content = preg_replace( $pattern2, $personnel_html, $content, 1 );
+				}
+			}
+		}
+	}
+	return $content;
+}
+add_filter( 'the_content', 'hawk_enhance_homepage_personnel', 10 );
+
+/**
  * Render executive command CTA section in place of legacy dull CTA block.
  *
  * @param string $content Post content.
