@@ -1202,7 +1202,8 @@ body.hawk-v2 .hawk-v2-banner-media {
 @media (prefers-reduced-motion: reduce) {
 	body.hawk-v2 .hawk-v2-hero-scan,
 	body.hawk-v2 .hawk-v2-hero-badge-dot,
-	body.hawk-v2 .hawk-v2-pulse-dot {
+	body.hawk-v2 .hawk-v2-pulse-dot,
+	body.hawk-v2 .hawk-v2-cta-radar-ring {
 		animation: none !important;
 	}
 
@@ -1210,7 +1211,442 @@ body.hawk-v2 .hawk-v2-banner-media {
 	body.hawk-v2 .hawk-v2-nav-list a,
 	body.hawk-v2 .hawk-v2-header-quote-btn,
 	body.hawk-v2 .hawk-v2-hero-actions .hawk-v2-btn,
-	body.hawk-v2 .hawk-v2-hero-actions .hawk-v2-btn-outline {
+	body.hawk-v2 .hawk-v2-hero-actions .hawk-v2-btn-outline,
+	body.hawk-v2 .hawk-v2-cta-btn-primary,
+	body.hawk-v2 .hawk-v2-cta-btn-phone {
 		transition: none !important;
 	}
 }
+
+/* Executive Command CTA Section ----------------------------------------- */
+
+body.hawk-v2 .hawk-v2-cta-section {
+	position: relative;
+	width: 100%;
+	min-height: 100svh;
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 80px 24px 90px;
+	overflow: hidden;
+	background: #070c11 !important;
+	color: #f4f7f5;
+	isolation: isolate;
+	box-sizing: border-box;
+}
+
+/* Atmospheric Radar Rings & Top Gold Flare */
+body.hawk-v2 .hawk-v2-cta-atmosphere {
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	pointer-events: none;
+	overflow: hidden;
+}
+
+body.hawk-v2 .hawk-v2-cta-glow-top {
+	position: absolute;
+	top: -120px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: min(900px, 90vw);
+	height: 480px;
+	border-radius: 50%;
+	background: radial-gradient(ellipse at center, rgba(232, 198, 74, 0.18) 0%, rgba(232, 198, 74, 0.04) 45%, transparent 70%);
+	filter: blur(40px);
+}
+
+body.hawk-v2 .hawk-v2-cta-grid {
+	position: absolute;
+	inset: 0;
+	background-image:
+		linear-gradient(rgba(232, 198, 74, 0.03) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(232, 198, 74, 0.03) 1px, transparent 1px);
+	background-size: 56px 56px;
+	mask-image: radial-gradient(ellipse at 50% 50%, #000 30%, transparent 80%);
+	-webkit-mask-image: radial-gradient(ellipse at 50% 50%, #000 30%, transparent 80%);
+	opacity: 0.7;
+}
+
+/* Animated concentric radar rings */
+body.hawk-v2 .hawk-v2-cta-radar-ring {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 50%;
+	border: 1px solid rgba(232, 198, 74, 0.12);
+	pointer-events: none;
+}
+
+body.hawk-v2 .hawk-v2-cta-radar-1 {
+	width: 580px;
+	height: 580px;
+	animation: ctaRadarPulse 6s infinite ease-out;
+}
+
+body.hawk-v2 .hawk-v2-cta-radar-2 {
+	width: 860px;
+	height: 860px;
+	animation: ctaRadarPulse 6s infinite ease-out 2s;
+}
+
+body.hawk-v2 .hawk-v2-cta-radar-3 {
+	width: 1140px;
+	height: 1140px;
+	animation: ctaRadarPulse 6s infinite ease-out 4s;
+}
+
+@keyframes ctaRadarPulse {
+	0% {
+		opacity: 0;
+		transform: translate(-50%, -50%) scale(0.7);
+	}
+	40% {
+		opacity: 0.65;
+		border-color: rgba(232, 198, 74, 0.22);
+	}
+	100% {
+		opacity: 0;
+		transform: translate(-50%, -50%) scale(1.18);
+		border-color: rgba(232, 198, 74, 0.02);
+	}
+}
+
+/* Container */
+body.hawk-v2 .hawk-v2-cta-container {
+	position: relative;
+	z-index: 2;
+	width: 100%;
+	max-width: 1040px;
+	margin: 0 auto;
+}
+
+/* Central Command Glass Card */
+body.hawk-v2 .hawk-v2-cta-card {
+	position: relative;
+	padding: clamp(36px, 5vw, 56px) clamp(24px, 5vw, 56px) clamp(30px, 4vw, 42px);
+	border: 1px solid rgba(232, 198, 74, 0.3);
+	border-radius: 24px;
+	background:
+		radial-gradient(ellipse at 50% 0%, rgba(232, 198, 74, 0.08) 0%, transparent 65%),
+		linear-gradient(180deg, rgba(16, 26, 36, 0.85) 0%, rgba(7, 12, 18, 0.94) 100%);
+	box-shadow:
+		0 30px 80px rgba(0, 0, 0, 0.65),
+		0 0 0 1px rgba(255, 255, 255, 0.06),
+		inset 0 1px 0 rgba(255, 255, 255, 0.12),
+		inset 0 -1px 0 rgba(232, 198, 74, 0.18);
+	backdrop-filter: blur(24px);
+	-webkit-backdrop-filter: blur(24px);
+	text-align: center;
+	overflow: hidden;
+}
+
+/* Corner HUD crosshairs/brackets */
+body.hawk-v2 .hawk-v2-cta-corner {
+	position: absolute;
+	width: 18px;
+	height: 18px;
+	border-color: var(--hawk-gold);
+	border-style: solid;
+	pointer-events: none;
+	opacity: 0.85;
+}
+
+body.hawk-v2 .hawk-v2-cta-corner--tl {
+	top: 12px;
+	left: 12px;
+	border-width: 2px 0 0 2px;
+}
+
+body.hawk-v2 .hawk-v2-cta-corner--tr {
+	top: 12px;
+	right: 12px;
+	border-width: 2px 2px 0 0;
+}
+
+body.hawk-v2 .hawk-v2-cta-corner--bl {
+	bottom: 12px;
+	left: 12px;
+	border-width: 0 0 2px 2px;
+}
+
+body.hawk-v2 .hawk-v2-cta-corner--br {
+	bottom: 12px;
+	right: 12px;
+	border-width: 0 2px 2px 0;
+}
+
+/* Badge Header */
+body.hawk-v2 .hawk-v2-cta-badge-wrap {
+	margin-bottom: 20px;
+}
+
+body.hawk-v2 .hawk-v2-cta-badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	padding: 7px 10px 7px 14px;
+	border: 1px solid rgba(232, 198, 74, 0.32);
+	border-radius: 999px;
+	background: rgba(8, 14, 20, 0.7);
+	color: rgba(244, 247, 245, 0.92);
+	box-shadow: 0 0 24px rgba(232, 198, 74, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+	backdrop-filter: blur(14px);
+	-webkit-backdrop-filter: blur(14px);
+	font-size: 10px;
+	font-weight: 700;
+	letter-spacing: 0.14em;
+}
+
+body.hawk-v2 .hawk-v2-cta-badge-meta {
+	display: inline-flex;
+	align-items: center;
+	margin-left: 6px;
+	padding: 3px 8px;
+	border-left: 1px solid rgba(232, 198, 74, 0.3);
+	color: var(--hawk-gold);
+	font-size: 9px;
+	font-weight: 700;
+	letter-spacing: 0.14em;
+}
+
+/* Title */
+body.hawk-v2 .hawk-v2-cta-title {
+	margin: 0 auto 18px;
+	color: #ffffff !important;
+	font-family: var(--hawk-display);
+	font-size: clamp(2.4rem, 4.4vw, 3.6rem) !important;
+	font-weight: 800 !important;
+	letter-spacing: -0.035em !important;
+	line-height: 1.12 !important;
+	max-width: 22ch;
+	text-shadow: 0 4px 28px rgba(0, 0, 0, 0.6);
+}
+
+body.hawk-v2 .hawk-v2-cta-title-accent {
+	display: inline-block;
+	background: linear-gradient(125deg, #FFF099 0%, var(--hawk-gold) 45%, #D4AF26 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	filter: drop-shadow(0 2px 20px rgba(232, 198, 74, 0.38));
+}
+
+/* Description */
+body.hawk-v2 .hawk-v2-cta-desc {
+	max-width: 58ch;
+	margin: 0 auto 34px;
+	color: rgba(244, 247, 245, 0.8) !important;
+	font-size: clamp(1rem, 1.2vw, 1.15rem);
+	line-height: 1.7;
+	text-shadow: 0 1px 12px rgba(0, 0, 0, 0.6);
+}
+
+/* Actions Hub */
+body.hawk-v2 .hawk-v2-cta-actions {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 16px;
+	margin-bottom: 44px;
+}
+
+body.hawk-v2 .hawk-v2-cta-btn-primary {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	min-height: 52px !important;
+	padding: 13px 28px !important;
+	border: 1px solid rgba(232, 198, 74, 0.7) !important;
+	border-radius: 999px !important;
+	background: linear-gradient(180deg, #F5DC76 0%, var(--hawk-gold) 100%) !important;
+	color: #0E161E !important;
+	box-shadow:
+		0 10px 28px rgba(232, 198, 74, 0.32),
+		0 0 0 1px rgba(232, 198, 74, 0.25) !important;
+	font-size: 12px !important;
+	font-weight: 700 !important;
+	letter-spacing: 0.07em !important;
+	text-transform: uppercase !important;
+	text-decoration: none !important;
+	transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+body.hawk-v2 .hawk-v2-cta-btn-primary:hover,
+body.hawk-v2 .hawk-v2-cta-btn-primary:focus-visible {
+	border-color: #FFFFFF !important;
+	background: #FFF1A8 !important;
+	color: #0E161E !important;
+	box-shadow: 0 14px 38px rgba(232, 198, 74, 0.45) !important;
+	transform: translateY(-2px);
+}
+
+body.hawk-v2 .hawk-v2-cta-btn-phone {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	min-height: 52px !important;
+	padding: 13px 26px !important;
+	border: 1px solid rgba(255, 255, 255, 0.22) !important;
+	border-radius: 999px !important;
+	background: rgba(255, 255, 255, 0.05) !important;
+	color: #FFFFFF !important;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2) !important;
+	backdrop-filter: blur(14px);
+	-webkit-backdrop-filter: blur(14px);
+	font-size: 12px !important;
+	font-weight: 700 !important;
+	letter-spacing: 0.06em !important;
+	text-transform: uppercase !important;
+	text-decoration: none !important;
+	transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+body.hawk-v2 .hawk-v2-cta-btn-phone svg {
+	color: var(--hawk-gold);
+}
+
+body.hawk-v2 .hawk-v2-cta-btn-phone:hover,
+body.hawk-v2 .hawk-v2-cta-btn-phone:focus-visible {
+	border-color: var(--hawk-gold) !important;
+	background: rgba(232, 198, 74, 0.15) !important;
+	color: #FFFFFF !important;
+	transform: translateY(-2px);
+}
+
+/* Trust Pillars Grid */
+body.hawk-v2 .hawk-v2-cta-pillars {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 20px;
+	padding: 30px 0 28px;
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+	text-align: left;
+}
+
+body.hawk-v2 .hawk-v2-cta-pillar {
+	display: flex;
+	gap: 14px;
+	align-items: flex-start;
+	padding: 16px;
+	border-radius: 14px;
+	background: rgba(255, 255, 255, 0.03);
+	border: 1px solid rgba(255, 255, 255, 0.05);
+	transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+body.hawk-v2 .hawk-v2-cta-pillar:hover {
+	background: rgba(232, 198, 74, 0.06);
+	border-color: rgba(232, 198, 74, 0.25);
+}
+
+body.hawk-v2 .hawk-v2-cta-pillar-icon {
+	flex-shrink: 0;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 38px;
+	height: 38px;
+	border-radius: 10px;
+	background: rgba(232, 198, 74, 0.12);
+	border: 1px solid rgba(232, 198, 74, 0.3);
+	color: var(--hawk-gold);
+}
+
+body.hawk-v2 .hawk-v2-cta-pillar-title {
+	margin: 0 0 4px;
+	font-family: var(--hawk-display);
+	font-size: 13.5px;
+	font-weight: 700;
+	color: #FFFFFF;
+	letter-spacing: -0.01em;
+}
+
+body.hawk-v2 .hawk-v2-cta-pillar-text {
+	margin: 0;
+	font-size: 11.5px;
+	line-height: 1.55;
+	color: rgba(244, 247, 245, 0.65) !important;
+}
+
+/* Footer Strip */
+body.hawk-v2 .hawk-v2-cta-footer-strip {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin-top: 24px;
+	font-size: 12px;
+	color: rgba(244, 247, 245, 0.7);
+}
+
+body.hawk-v2 .hawk-v2-cta-landlines a {
+	color: var(--hawk-gold) !important;
+	text-decoration: none !important;
+	font-weight: 600;
+}
+
+body.hawk-v2 .hawk-v2-cta-landlines a:hover {
+	text-decoration: underline !important;
+}
+
+body.hawk-v2 .hawk-v2-cta-sep {
+	color: rgba(232, 198, 74, 0.4);
+}
+
+body.hawk-v2 .hawk-v2-cta-response-time {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	color: #E2E8F0;
+}
+
+body.hawk-v2 .hawk-v2-cta-check {
+	color: var(--hawk-gold);
+	font-weight: 800;
+}
+
+/* Responsive Rules for CTA Section */
+@media (max-width: 900px) {
+	body.hawk-v2 .hawk-v2-cta-pillars {
+		grid-template-columns: 1fr;
+		gap: 12px;
+	}
+
+	body.hawk-v2 .hawk-v2-cta-section {
+		min-height: auto;
+		padding: 60px 16px 70px;
+	}
+}
+
+@media (max-width: 640px) {
+	body.hawk-v2 .hawk-v2-cta-card {
+		padding: 30px 16px 24px;
+		border-radius: 18px;
+	}
+
+	body.hawk-v2 .hawk-v2-cta-title {
+		font-size: clamp(1.85rem, 8vw, 2.35rem) !important;
+	}
+
+	body.hawk-v2 .hawk-v2-cta-actions {
+		flex-direction: column;
+		width: 100%;
+		gap: 10px;
+	}
+
+	body.hawk-v2 .hawk-v2-cta-btn-primary,
+	body.hawk-v2 .hawk-v2-cta-btn-phone {
+		width: 100%;
+		font-size: 11px !important;
+		padding: 12px 16px !important;
+	}
+}
+
