@@ -2054,4 +2054,496 @@ body.hawk-v2 .hawk-v2-cta-check {
 	}
 }
 
+/* About Us Portal (Modern Corporate Style) ------------------------------ */
+
+.hawk-about-portal {
+	background: #ffffff;
+	font-family: 'Inter', sans-serif;
+	color: #334155;
+	position: relative;
+	overflow: hidden;
+}
+
+.hawk-about-section {
+	padding: 84px 24px;
+	position: relative;
+	z-index: 1;
+}
+
+.hawk-about-section::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background-image: radial-gradient(#e2e8f0 1.2px, transparent 0);
+	background-size: 32px 32px;
+	opacity: 0.5;
+	z-index: 0;
+	pointer-events: none;
+}
+
+.hawk-about-container {
+	max-width: 1240px;
+	margin: 0 auto;
+	width: 100%;
+	position: relative;
+	z-index: 1;
+}
+
+.hawk-about-header {
+	max-width: 760px;
+	margin: 0 auto 52px;
+}
+
+.hawk-about-header.text-center {
+	text-align: center;
+}
+
+.hawk-about-badge-wrap {
+	margin-bottom: 18px;
+}
+
+.hawk-about-heading {
+	font-family: 'Orbitron', 'Plus Jakarta Sans', sans-serif;
+	font-size: clamp(2rem, 3.2vw, 2.75rem) !important;
+	font-weight: 800 !important;
+	color: #0f172a !important;
+	line-height: 1.18 !important;
+	letter-spacing: -0.025em;
+	margin: 0 0 16px;
+}
+
+.hawk-about-lead {
+	font-size: 1.0625rem;
+	font-weight: 500;
+	color: #1e293b;
+	line-height: 1.68;
+	margin: 0 0 16px;
+}
+
+.hawk-about-text {
+	font-size: 0.9375rem;
+	color: #64748b;
+	line-height: 1.72;
+	margin: 0 0 24px;
+}
+
+.hawk-about-sublead {
+	font-size: 1rem;
+	color: #64748b;
+	line-height: 1.65;
+	margin: 0;
+}
+
+/* 2-Column Overview Grid */
+.hawk-about-grid--2col {
+	display: grid;
+	grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+	gap: clamp(36px, 4.5vw, 64px);
+	align-items: center;
+}
+
+.hawk-about-grid--2col.align-center {
+	align-items: center;
+}
+
+/* Credentials List */
+.hawk-about-credentials {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	margin-top: 24px;
+}
+
+.hawk-cred-item {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	padding: 12px 18px;
+	border-radius: 10px;
+	background: #f8fafc;
+	border: 1px solid #e2e8f0;
+	transition: all 0.25s ease;
+}
+
+.hawk-cred-item:hover {
+	background: #ffffff;
+	border-color: #0e161e;
+	transform: translateX(4px);
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+}
+
+.hawk-cred-icon {
+	width: 38px;
+	height: 38px;
+	border-radius: 8px;
+	background: rgba(232, 198, 74, 0.12);
+	border: 1px solid rgba(232, 198, 74, 0.35);
+	color: #936f0a;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+}
+
+.hawk-cred-text strong {
+	display: block;
+	font-family: 'Orbitron', sans-serif;
+	font-size: 13.5px;
+	font-weight: 700;
+	color: #0f172a;
+	line-height: 1.2;
+}
+
+.hawk-cred-text span {
+	display: block;
+	font-size: 12px;
+	color: #64748b;
+	margin-top: 2px;
+}
+
+/* Visual Card Frame in Overview */
+.hawk-about-card-frame {
+	position: relative;
+	background: #ffffff;
+	border: 1px solid #e2e8f0;
+	border-radius: 16px;
+	padding: 12px;
+	box-shadow: 0 24px 60px rgba(0, 0, 0, 0.08);
+	overflow: hidden;
+}
+
+.hawk-about-img-wrap {
+	position: relative;
+	border-radius: 12px;
+	overflow: hidden;
+	height: 440px;
+}
+
+.hawk-about-img-wrap img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center 25%;
+	display: block;
+	transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.hawk-about-card-frame:hover .hawk-about-img-wrap img {
+	transform: scale(1.03);
+}
+
+.hawk-about-img-overlay {
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(180deg, rgba(7, 12, 18, 0.1) 0%, transparent 35%, rgba(7, 12, 18, 0.82) 100%);
+	pointer-events: none;
+}
+
+.hawk-about-stat-bar {
+	position: absolute;
+	bottom: 24px;
+	left: 24px;
+	right: 24px;
+	padding: 14px 18px;
+	border-radius: 12px;
+	background: rgba(7, 12, 18, 0.84);
+	border: 1px solid rgba(232, 198, 74, 0.25);
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 8px;
+	text-align: center;
+}
+
+.hawk-about-stat-num {
+	display: block;
+	font-family: 'Orbitron', sans-serif;
+	font-size: 1.1rem;
+	font-weight: 800;
+	color: #ffffff;
+}
+
+.hawk-about-stat-lbl {
+	display: block;
+	font-size: 9px;
+	font-weight: 600;
+	letter-spacing: 0.05em;
+	color: rgba(244, 247, 245, 0.65);
+	margin-top: 2px;
+	text-transform: uppercase;
+}
+
+/* Mission & Vision Section */
+.hawk-about-pillars-section {
+	background: #f8fafc;
+	border-top: 1px solid #e2e8f0;
+	border-bottom: 1px solid #e2e8f0;
+}
+
+.hawk-about-pillars-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 28px;
+}
+
+.hawk-pillar-card {
+	padding: 36px 32px;
+	border-radius: 16px;
+	background: #ffffff;
+	border: 1px solid #e2e8f0;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+	display: flex;
+	flex-direction: column;
+	transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.hawk-pillar-card:hover {
+	transform: translateY(-4px);
+	border-color: #0e161e;
+	box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+}
+
+.hawk-pillar-card-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+
+.hawk-pillar-icon {
+	width: 50px;
+	height: 50px;
+	border-radius: 12px;
+	background: #0e161e;
+	color: var(--hawk-gold);
+	border: 1px solid rgba(232, 198, 74, 0.3);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.hawk-pillar-tag {
+	font-family: 'Orbitron', sans-serif;
+	font-size: 9px;
+	font-weight: 700;
+	letter-spacing: 0.14em;
+	color: #64748b;
+	padding: 4px 10px;
+	border-radius: 999px;
+	background: #f1f5f9;
+}
+
+.hawk-pillar-title {
+	font-family: 'Orbitron', 'Plus Jakarta Sans', sans-serif;
+	font-size: 1.35rem;
+	font-weight: 800;
+	color: #0f172a;
+	margin: 0 0 12px;
+}
+
+.hawk-pillar-body {
+	font-size: 14px;
+	color: #64748b;
+	line-height: 1.68;
+	margin: 0 0 24px;
+	flex-grow: 1;
+}
+
+.hawk-pillar-points {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	border-top: 1px solid #f1f5f9;
+	padding-top: 18px;
+}
+
+.hawk-pillar-points li {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 13px;
+	font-weight: 600;
+	color: #1e293b;
+}
+
+.hawk-pillar-points li span {
+	color: #16a34a;
+	font-weight: 800;
+}
+
+/* Core Values Section */
+.hawk-values-grid {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 20px;
+}
+
+.hawk-value-card {
+	padding: 28px 22px;
+	border-radius: 14px;
+	background: #ffffff;
+	border: 1px solid #e2e8f0;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+	transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.hawk-value-card:hover {
+	transform: translateY(-4px);
+	border-color: #0e161e;
+	box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+}
+
+.hawk-value-icon {
+	width: 44px;
+	height: 44px;
+	border-radius: 10px;
+	background: rgba(232, 198, 74, 0.12);
+	border: 1px solid rgba(232, 198, 74, 0.35);
+	color: #936f0a;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 18px;
+	transition: all 0.3s ease;
+}
+
+.hawk-value-card:hover .hawk-value-icon {
+	background: #0e161e;
+	color: var(--hawk-gold);
+	border-color: var(--hawk-gold);
+}
+
+.hawk-value-title {
+	font-family: 'Orbitron', 'Plus Jakarta Sans', sans-serif;
+	font-size: 14px;
+	font-weight: 700;
+	color: #0f172a;
+	margin: 0 0 8px;
+	line-height: 1.35;
+}
+
+.hawk-value-desc {
+	font-size: 13px;
+	color: #64748b;
+	line-height: 1.6;
+	margin: 0;
+}
+
+/* Management & Field Support Section */
+.hawk-about-mgmt-section {
+	background: #ffffff;
+}
+
+.hawk-mgmt-features {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	margin-top: 24px;
+}
+
+.hawk-mgmt-feat-item {
+	display: flex;
+	align-items: flex-start;
+	gap: 14px;
+	padding: 16px 18px;
+	border-radius: 12px;
+	background: #f8fafc;
+	border: 1px solid #e2e8f0;
+	transition: all 0.25s ease;
+}
+
+.hawk-mgmt-feat-item:hover {
+	background: #ffffff;
+	border-color: #0e161e;
+	transform: translateX(4px);
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+}
+
+.hawk-mgmt-feat-bullet {
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	background: #0e161e;
+	color: var(--hawk-gold);
+	font-size: 11px;
+	font-weight: 800;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	margin-top: 2px;
+}
+
+.hawk-mgmt-feat-content h4 {
+	font-family: 'Orbitron', sans-serif;
+	font-size: 14px;
+	font-weight: 700;
+	color: #0f172a;
+	margin: 0 0 4px;
+}
+
+.hawk-mgmt-feat-content p {
+	font-size: 13px;
+	color: #64748b;
+	line-height: 1.58;
+	margin: 0;
+}
+
+/* Responsive Rules for About Us Portal */
+@media (max-width: 1024px) {
+	.hawk-about-grid--2col {
+		grid-template-columns: 1fr;
+		gap: 40px;
+	}
+
+	.hawk-values-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 16px;
+	}
+
+	.hawk-about-img-wrap {
+		height: 380px;
+	}
+}
+
+@media (max-width: 640px) {
+	.hawk-about-section {
+		padding: 60px 16px;
+	}
+
+	.hawk-about-heading {
+		font-size: clamp(1.75rem, 8vw, 2.25rem) !important;
+	}
+
+	.hawk-about-pillars-grid {
+		grid-template-columns: 1fr;
+		gap: 20px;
+	}
+
+	.hawk-values-grid {
+		grid-template-columns: 1fr;
+		gap: 14px;
+	}
+
+	.hawk-pillar-card {
+		padding: 24px 20px;
+	}
+
+	.hawk-about-img-wrap {
+		height: 280px;
+	}
+
+	.hawk-about-stat-bar {
+		position: static;
+		margin-top: 14px;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 10px;
+	}
+}
+
+
 

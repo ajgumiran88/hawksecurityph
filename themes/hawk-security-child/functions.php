@@ -367,3 +367,21 @@ function hawk_security_child_pix_colors() {
 	<?php
 }
 add_action( 'wp_head', 'hawk_security_child_pix_colors', 99 );
+
+/**
+ * Automatically route About Us page to page-about.php template.
+ *
+ * @param string $template Current template file path.
+ * @return string Filtered template file path.
+ */
+function hawk_route_about_page_template( $template ) {
+	if ( is_page( 'about-us' ) || is_page( 'about' ) || is_page( 804 ) ) {
+		$about_template = locate_template( array( 'page-about.php' ) );
+		if ( $about_template ) {
+			return $about_template;
+		}
+	}
+	return $template;
+}
+add_filter( 'template_include', 'hawk_route_about_page_template', 99 );
+
