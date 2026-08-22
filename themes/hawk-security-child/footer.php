@@ -13,6 +13,20 @@
 					<p class="hawk-v2-footer-tagline">
 						<?php esc_html_e( 'Protecting What Matters, Securing Your Future with Unwavering Commitment.', 'hawk-security-child' ); ?>
 					</p>
+
+					<!-- HUD Visitor Counter -->
+					<div class="hawk-v2-footer-counter" aria-label="<?php esc_attr_e( 'Secure Visits Counter', 'hawk-security-child' ); ?>">
+						<div class="hawk-v2-counter-header">
+							<span class="hawk-v2-pulse-dot" aria-hidden="true"></span>
+							<span class="hawk-v2-counter-title"><?php esc_html_e( 'TOTAL VISITORS', 'hawk-security-child' ); ?></span>
+						</div>
+						<div class="hawk-v2-counter-display">
+							<?php echo hawk_render_visitor_counter_digits( hawk_get_visitor_count() ); ?>
+						</div>
+						<div class="hawk-v2-counter-meta">
+							<span><?php esc_html_e( '24/7 Monitored Portal', 'hawk-security-child' ); ?></span>
+						</div>
+					</div>
 				</div>
 
 				<!-- Column 2: Helpful Links -->
@@ -59,11 +73,18 @@
 
 			</div>
 
-			<!-- Bottom Copyright Bar -->
+			<!-- Bottom Copyright Bar & Stats -->
 			<div class="hawk-v2-footer-bottom">
-				<p class="hawk-v2-copyright">
-					&copy; <?php echo esc_html( date( 'Y' ) ); ?> <?php esc_html_e( 'HAWK SECURITY SERVICE, INC. All Rights Reserved.', 'hawk-security-child' ); ?>
-				</p>
+				<div class="hawk-v2-footer-bottom-wrap">
+					<p class="hawk-v2-copyright">
+						&copy; <?php echo esc_html( date( 'Y' ) ); ?> <?php esc_html_e( 'HAWK SECURITY SERVICE, INC. All Rights Reserved.', 'hawk-security-child' ); ?>
+					</p>
+					<div class="hawk-v2-footer-stats-pill">
+						<span class="hawk-v2-pulse-dot" aria-hidden="true"></span>
+						<span class="hawk-v2-stat-pill-label"><?php esc_html_e( 'Total Visitors:', 'hawk-security-child' ); ?></span>
+						<span class="hawk-v2-stat-pill-num"><?php echo esc_html( number_format_i18n( hawk_get_visitor_count() ) ); ?></span>
+					</div>
+				</div>
 			</div>
 
 		</div>
