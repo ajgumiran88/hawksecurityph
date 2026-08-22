@@ -22,6 +22,7 @@ $files = array(
 	'page'        => $root . '/themes/hawk-security-child/page.php',
 	'hero'        => $root . '/themes/hawk-security-child/template-parts/hero.php',
 	'banner'      => $root . '/themes/hawk-security-child/template-parts/page-banner.php',
+	'personnel'   => $root . '/themes/hawk-security-child/template-parts/personnel-section.php',
 	'loader'      => $root . '/mu-plugins/hawk-v2-loader.php',
 );
 
@@ -56,7 +57,9 @@ $checks = array(
 	'hero light overlay treatment'       => array( 'premium_css', 'rgba(247, 248, 246, 0.96)' ),
 	'normal-proportion hero type'        => array( 'premium_css', 'font-size: clamp(2.75rem, 4.2vw, 4rem);' ),
 	'compact card density'               => array( 'premium_css', 'min-height: 0 !important;' ),
-	'premium refactor version'           => array( 'functions', "HAWK_CHILD_VERSION', '0.9.9" ),
+	'premium refactor version'           => array( 'functions', "HAWK_CHILD_VERSION', '1.0.0" ),
+	'personnel filter runs after WPBakery shortcodes' => array( 'functions', "add_filter( 'the_content', 'hawk_enhance_homepage_personnel', 20" ),
+	'personnel showcase template is shipped' => array( 'personnel', 'hawk-personnel-portal' ),
 	'navigation uses solid HAWK navy token' => array( 'fx_css', '--hawk-nav-solid: #17212A;' ),
 	'navigation consumes solid HAWK navy token' => array( 'fx_css', 'background: var(--hawk-nav-solid);' ),
 	'scrolled outer header remains transparent' => array( 'fx_css', 'body.hawk-v2.hawk-v2-scrolled .hawk-v2-header {' ),

@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'HAWK_CHILD_VERSION', '0.9.9' );
+define( 'HAWK_CHILD_VERSION', '1.0.0' );
 define( 'HAWK_CHILD_DIR', get_stylesheet_directory() );
 define( 'HAWK_CHILD_URI', get_stylesheet_directory_uri() );
 
@@ -287,6 +287,9 @@ add_action( 'wp_enqueue_scripts', 'hawk_dequeue_unwanted_sliders', 100 );
 /**
  * Render executive personnel tactical showcase in place of legacy unstyled personnel block.
  *
+ * Must run after `do_shortcode` (priority 11) so WPBakery has already
+ * expanded `[vc_row]` into HTML the replacement patterns can match.
+ *
  * @param string $content Post content.
  * @return string Filtered post content.
  */
@@ -311,7 +314,7 @@ function hawk_enhance_homepage_personnel( $content ) {
 	}
 	return $content;
 }
-add_filter( 'the_content', 'hawk_enhance_homepage_personnel', 10 );
+add_filter( 'the_content', 'hawk_enhance_homepage_personnel', 20 );
 
 /**
  * Render executive command CTA section in place of legacy dull CTA block.
