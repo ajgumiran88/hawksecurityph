@@ -17,7 +17,7 @@ get_header();
 
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-	<main id="primary" class="hawk-v2-main hawk-v2-home-main">
+	<main id="primary" class="hawk-v2-main hawk-v2-home-main" tabindex="-1" aria-labelledby="hawk-v2-hero-heading">
 		<div class="hawk-v2-home-content">
 			<?php the_content(); ?>
 		</div>

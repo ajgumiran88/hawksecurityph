@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'HAWK_CHILD_VERSION', '0.5.1' );
+define( 'HAWK_CHILD_VERSION', '0.9.9' );
 define( 'HAWK_CHILD_DIR', get_stylesheet_directory() );
 define( 'HAWK_CHILD_URI', get_stylesheet_directory_uri() );
 
@@ -58,7 +58,7 @@ function hawk_security_child_enqueue_assets() {
 
 	wp_enqueue_style(
 		'hawk-v2-fonts',
-		'https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap',
+		'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap',
 		array(),
 		null
 	);
@@ -67,6 +67,20 @@ function hawk_security_child_enqueue_assets() {
 		'hawk-v2',
 		HAWK_CHILD_URI . '/assets/css/hawk-v2.css',
 		array( 'solutech-parent', 'hawk-v2-fonts' ),
+		HAWK_CHILD_VERSION
+	);
+
+	wp_enqueue_style(
+		'hawk-premium',
+		HAWK_CHILD_URI . '/assets/css/hawk-premium.css',
+		array( 'hawk-v2' ),
+		HAWK_CHILD_VERSION
+	);
+
+	wp_enqueue_style(
+		'hawk-fx',
+		HAWK_CHILD_URI . '/assets/css/hawk-fx.css',
+		array( 'hawk-premium' ),
 		HAWK_CHILD_VERSION
 	);
 
@@ -109,6 +123,12 @@ add_filter( 'body_class', 'hawk_security_child_body_class' );
  * @return string Logo image URL.
  */
 function hawk_get_logo_url() {
+	$official_seal = home_url( '/wp-content/uploads/2025/01/hawk_seal.webp' );
+	$official_path = ABSPATH . 'wp-content/uploads/2025/01/hawk_seal.webp';
+	if ( file_exists( $official_path ) ) {
+		return esc_url( $official_seal );
+	}
+
 	$theme_logo = HAWK_CHILD_URI . '/assets/img/hawk-logo.png';
 	if ( file_exists( HAWK_CHILD_DIR . '/assets/img/hawk-logo.png' ) ) {
 		return esc_url( $theme_logo );
@@ -256,12 +276,12 @@ function hawk_security_child_pix_colors() {
 	?>
 	<style id="hawk-v2-pix-tokens">
 		:root {
-			--pix-main-color: #0b0b0b;
-			--pix-button-color: #e6c200;
-			--pix-title-color: #0b0b0b;
-			--pix-font-color: #3d3d3d;
-			--pix-tab-overlay-color: #0b0b0b;
-			--pix-tab-overlay-opacity: 0.55;
+	--pix-main-color: #17212A;
+	--pix-button-color: #E8C64A;
+	--pix-title-color: #17212A;
+	--pix-font-color: #53616C;
+	--pix-tab-overlay-color: #F7F8F6;
+	--pix-tab-overlay-opacity: 0.12;
 		}
 	</style>
 	<?php

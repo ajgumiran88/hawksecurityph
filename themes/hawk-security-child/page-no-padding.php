@@ -16,7 +16,7 @@ get_header();
 
 <?php get_template_part( 'template-parts/page-banner' ); ?>
 
-<main id="primary" class="hawk-v2-main hawk-v2-inner-main">
+<main id="primary" class="hawk-v2-main hawk-v2-inner-main" tabindex="-1" aria-labelledby="hawk-v2-page-title">
 	<div class="hawk-v2-inner-content">
 		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 			

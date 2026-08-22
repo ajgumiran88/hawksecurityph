@@ -13,17 +13,6 @@
 					<p class="hawk-v2-footer-tagline">
 						<?php esc_html_e( 'Protecting What Matters, Securing Your Future with Unwavering Commitment.', 'hawk-security-child' ); ?>
 					</p>
-					<div class="hawk-v2-footer-socials">
-						<a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="hawk-v2-social-btn" aria-label="Facebook">
-							<i class="fab fa-facebook-f"></i>
-						</a>
-						<a href="https://api.whatsapp.com/" target="_blank" rel="noopener noreferrer" class="hawk-v2-social-btn" aria-label="WhatsApp">
-							<i class="fab fa-whatsapp"></i>
-						</a>
-						<a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="hawk-v2-social-btn" aria-label="Instagram">
-							<i class="fab fa-instagram"></i>
-						</a>
-					</div>
 				</div>
 
 				<!-- Column 2: Helpful Links -->

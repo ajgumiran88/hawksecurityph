@@ -31,17 +31,63 @@
     var openBtn = document.querySelector(".js-hawk-drawer-open");
     var closeBtns = document.querySelectorAll(".js-hawk-drawer-close");
     var drawer = document.getElementById("hawk-v2-mobile-drawer");
+    var panel = drawer ? drawer.querySelector(".hawk-v2-drawer-panel") : null;
+    var closeButton = drawer ? drawer.querySelector(".hawk-v2-drawer-close") : null;
+    var triggerElement = null;
 
     if (!drawer) {
       return;
     }
 
+    function getDrawerFocusableElements() {
+      if (!panel) {
+        return [];
+      }
+
+      return Array.prototype.slice.call(
+        panel.querySelectorAll(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )
+      );
+    }
+
+    function trapDrawerFocus(event) {
+      if (
+        event.key !== "Tab" ||
+        !document.body.classList.contains("hawk-v2-drawer-active")
+      ) {
+        return;
+      }
+
+      var focusable = getDrawerFocusableElements();
+      if (!focusable.length) {
+        event.preventDefault();
+        return;
+      }
+
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+
     function openDrawer() {
+      triggerElement = document.activeElement;
       document.body.classList.add("hawk-v2-drawer-active");
       drawer.setAttribute("aria-hidden", "false");
       if (openBtn) {
         openBtn.setAttribute("aria-expanded", "true");
       }
+      window.setTimeout(function () {
+        if (closeButton) {
+          closeButton.focus();
+        }
+      }, 0);
     }
 
     function closeDrawer() {
@@ -49,6 +95,9 @@
       drawer.setAttribute("aria-hidden", "true");
       if (openBtn) {
         openBtn.setAttribute("aria-expanded", "false");
+      }
+      if (triggerElement && typeof triggerElement.focus === "function") {
+        triggerElement.focus();
       }
     }
 
@@ -71,6 +120,7 @@
       if (e.key === "Escape" && document.body.classList.contains("hawk-v2-drawer-active")) {
         closeDrawer();
       }
+      trapDrawerFocus(e);
     });
 
     // Close on clicking links in the drawer

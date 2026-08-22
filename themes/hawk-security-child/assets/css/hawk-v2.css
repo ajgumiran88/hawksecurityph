@@ -8,36 +8,33 @@
  * @version 0.5.1
  */
 
-@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap");
-
-:root {
-  --hawk-gold: #e6c200;
-  --hawk-gold-deep: #c9a800;
-  --hawk-gold-soft: #f4e48a;
-  --hawk-black: #0b0b0b;
-  --hawk-graphite: #141414;
-  --hawk-ink: #1a1a1a;
-  --hawk-white: #ffffff;
-  --hawk-soft-gray: #f6f6f7;
-  --hawk-line: #e8e8ea;
-  --hawk-muted: #5a5a5a;
-  --hawk-radius: 4px;
-  --hawk-shadow: 0 12px 32px rgba(11, 11, 11, 0.06);
+body.hawk-v2 {
+  --hawk-gold: #F4E52A;
+  --hawk-gold-deep: #D7B72D;
+  --hawk-gold-soft: #FEF7BE;
+  --hawk-black: #070707;
+  --hawk-graphite: #1B1B1B;
+  --hawk-ink: #171717;
+  --hawk-white: #FFFFFF;
+  --hawk-soft-gray: #F6F6F3;
+  --hawk-line: #E7E5E0;
+  --hawk-muted: #4B5563;
+  --hawk-radius: 6px;
+  --hawk-shadow: 0 16px 36px rgba(7, 7, 7, 0.08);
   --hawk-header-height: 82px;
-  --hawk-font: "Manrope", "Segoe UI", sans-serif;
-  --hawk-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --hawk-font: "Inter", "Segoe UI", sans-serif;
+  --hawk-display: "Plus Jakarta Sans", "Segoe UI", sans-serif;
 }
 
 /* ------------------------------------------------------------------ */
 /* Global Resets & Typography                                         */
 /* ------------------------------------------------------------------ */
 
-html {
+body.hawk-v2,
+body.hawk-v2 *,
+body.hawk-v2 *::before,
+body.hawk-v2 *::after {
   box-sizing: border-box;
-}
-
-*, *::before, *::after {
-  box-sizing: inherit;
 }
 
 body.hawk-v2 {
@@ -82,7 +79,31 @@ body.hawk-v2 a {
 
 body.hawk-v2 a:hover,
 body.hawk-v2 a:focus-visible {
-  color: var(--hawk-gold-deep);
+  color: var(--hawk-graphite);
+}
+
+body.hawk-v2 :focus-visible {
+  outline: 3px solid var(--hawk-gold);
+  outline-offset: 3px;
+}
+
+body.hawk-v2 .hawk-v2-skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 1200;
+  padding: 12px 16px;
+  background: var(--hawk-gold);
+  color: var(--hawk-black);
+  font-size: 13px;
+  font-weight: 700;
+  transform: translateY(-160%);
+  transition: transform 0.2s ease;
+}
+
+body.hawk-v2 .hawk-v2-skip-link:focus {
+  transform: translateY(0);
+  color: var(--hawk-black);
 }
 
 /* ------------------------------------------------------------------ */
@@ -181,8 +202,8 @@ body.hawk-v2 .vc_btn3.vc_btn3-style-outline {
   left: 0;
   width: 100%;
   z-index: 1000;
-  background: #0b0b0b;
-  border-bottom: 1px solid rgba(230, 194, 0, 0.25);
+  background: var(--hawk-black);
+  border-bottom: 1px solid rgba(244, 229, 42, 0.28);
   transition: padding 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
 }
 
@@ -203,8 +224,8 @@ body.hawk-v2 .vc_btn3.vc_btn3-style-outline {
 }
 
 .hawk-v2-scrolled .hawk-v2-header {
-  box-shadow: 0 1px 0 rgba(230, 194, 0, 0.2), 0 8px 24px rgba(0, 0, 0, 0.18);
-  background: rgba(11, 11, 11, 0.97);
+  box-shadow: 0 1px 0 rgba(244, 229, 42, 0.2), 0 8px 24px rgba(0, 0, 0, 0.18);
+  background: rgba(7, 7, 7, 0.97);
   backdrop-filter: blur(12px);
 }
 
@@ -251,12 +272,14 @@ body.hawk-v2 .vc_btn3.vc_btn3-style-outline {
 }
 
 .hawk-v2-nav-list a:hover,
+.hawk-v2-nav-list a:focus-visible,
 .hawk-v2-nav-list li.current-menu-item > a,
 .hawk-v2-nav-list li.current_page_item > a {
   color: var(--hawk-gold) !important;
 }
 
 .hawk-v2-nav-list a:hover::after,
+.hawk-v2-nav-list a:focus-visible::after,
 .hawk-v2-nav-list li.current-menu-item > a::after,
 .hawk-v2-nav-list li.current_page_item > a::after {
   width: 100%;
@@ -442,6 +465,7 @@ body.hawk-v2-drawer-active .hawk-v2-drawer-panel {
 }
 
 .hawk-v2-drawer-nav-list a:hover,
+.hawk-v2-drawer-nav-list a:focus-visible,
 .hawk-v2-drawer-nav-list li.current-menu-item > a {
   color: var(--hawk-gold) !important;
 }
@@ -997,6 +1021,19 @@ body.hawk-v2 .select-custom {
   box-shadow: none !important;
 }
 
+body.hawk-v2 .wpcf7-form-control-wrap {
+  display: block;
+  margin-top: 8px;
+}
+
+body.hawk-v2 .wpcf7 label {
+  display: block;
+  color: var(--hawk-ink);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
 body.hawk-v2 .wpcf7 input:focus,
 body.hawk-v2 .wpcf7 select:focus,
 body.hawk-v2 .wpcf7 textarea:focus {
@@ -1010,6 +1047,21 @@ body.hawk-v2 .pix-contact-form {
   border-radius: 10px;
   padding: 32px !important;
   max-width: 100% !important;
+}
+
+body.hawk-v2 .wpcf7-not-valid-tip {
+  color: #B42318;
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 7px;
+}
+
+body.hawk-v2 .wpcf7-response-output {
+  margin: 20px 0 0 !important;
+  padding: 14px 16px !important;
+  border: 1px solid var(--hawk-line) !important;
+  border-left: 4px solid var(--hawk-gold-deep) !important;
+  color: var(--hawk-ink) !important;
 }
 
 /* ------------------------------------------------------------------ */
@@ -1397,6 +1449,126 @@ body.hawk-v2 .hawk-clean-inner > div:last-child {
 }
 
 /* ------------------------------------------------------------------ */
+/* v0.6 Public Interface Refinement                                  */
+/* ------------------------------------------------------------------ */
+
+body.hawk-v2 .hawk-v2-home-content > .vc_row,
+body.hawk-v2 .hawk-v2-entry-content > .vc_row {
+  position: relative;
+}
+
+body.hawk-v2 .hawk-v2-home-content .wpb_single_image img,
+body.hawk-v2 .hawk-v2-entry-content .wpb_single_image img {
+  border-radius: var(--hawk-radius);
+}
+
+body.hawk-v2 .hawk-v2-entry-content .wpb_text_column > .wpb_wrapper > p,
+body.hawk-v2 .hawk-v2-home-content .wpb_text_column > .wpb_wrapper > p {
+  max-width: 76ch;
+}
+
+body.hawk-v2 .hawk-v2-entry-content .vc_row-has-fill:not(.hawk-competencies-portal):not(.hawk-requirements-portal),
+body.hawk-v2 .hawk-v2-home-content .vc_row-has-fill:not(.hawk-services-portal):not(.hawk-process-portal):not(.hawk-affiliates-section):not(.hawk-clean-portal) {
+  border-top: 1px solid var(--hawk-line);
+  border-bottom: 1px solid var(--hawk-line);
+}
+
+body.hawk-v2 .hawk-v2-entry-content .vc_row-has-fill .wpb_column,
+body.hawk-v2 .hawk-v2-home-content .vc_row-has-fill .wpb_column {
+  min-width: 0;
+}
+
+/* Job Manager and legacy recruitment-listing presentation only. */
+body.hawk-v2 .job-manager-form,
+body.hawk-v2 .job_filters,
+body.hawk-v2 .job-listing,
+body.hawk-v2 .job_listing {
+  font-family: var(--hawk-font);
+}
+
+body.hawk-v2 .job_filters {
+  margin-bottom: 28px;
+  padding: 20px;
+  background: var(--hawk-soft-gray);
+  border: 1px solid var(--hawk-line);
+  border-radius: var(--hawk-radius);
+}
+
+body.hawk-v2 .job_filters input,
+body.hawk-v2 .job_filters select,
+body.hawk-v2 .job-manager-form input,
+body.hawk-v2 .job-manager-form select,
+body.hawk-v2 .job-manager-form textarea {
+  min-height: 46px;
+  padding: 10px 12px;
+  border: 1px solid var(--hawk-line);
+  border-radius: 4px;
+  background: var(--hawk-white);
+  color: var(--hawk-ink);
+  font: inherit;
+}
+
+body.hawk-v2 ul.job_listings,
+body.hawk-v2 .job-listings {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--hawk-line);
+}
+
+body.hawk-v2 ul.job_listings li.job_listing,
+body.hawk-v2 .job-listing {
+  margin: 0;
+  border: 1px solid var(--hawk-line);
+  border-top: 0;
+  background: var(--hawk-white);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+body.hawk-v2 ul.job_listings li.job_listing:hover,
+body.hawk-v2 .job-listing:hover {
+  border-color: var(--hawk-gold-deep);
+  box-shadow: var(--hawk-shadow);
+}
+
+body.hawk-v2 ul.job_listings li.job_listing > a,
+body.hawk-v2 .job-listing > a {
+  padding: 22px 24px;
+  color: var(--hawk-ink);
+}
+
+body.hawk-v2 .job_listing .meta,
+body.hawk-v2 .job-listing .meta,
+body.hawk-v2 .job_listing .location,
+body.hawk-v2 .job-listing .location {
+  color: var(--hawk-muted);
+  font-size: 13px;
+}
+
+body.hawk-v2 .job-manager-pagination {
+  margin-top: 28px;
+}
+
+body.hawk-v2 .job-manager-pagination a,
+body.hawk-v2 .job-manager-pagination .current {
+  display: inline-flex;
+  min-width: 40px;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  margin-right: 6px;
+  border: 1px solid var(--hawk-line);
+  color: var(--hawk-ink);
+}
+
+body.hawk-v2 .job-manager-pagination .current,
+body.hawk-v2 .job-manager-pagination a:hover {
+  border-color: var(--hawk-gold);
+  background: var(--hawk-gold);
+  color: var(--hawk-black);
+}
+
+/* ------------------------------------------------------------------ */
 /* Motion & Accessibility                                             */
 /* ------------------------------------------------------------------ */
 
@@ -1458,7 +1630,7 @@ body.hawk-v2 .hawk-clean-inner > div:last-child {
 }
 
 @media (max-width: 768px) {
-  :root {
+  body.hawk-v2 {
     --hawk-header-height: 72px;
   }
 
@@ -1520,5 +1692,588 @@ body.hawk-v2 .hawk-clean-inner > div:last-child {
   body.hawk-v2 .hawk-comp-flex-grid .hawk-comp-card:nth-child(4):nth-last-child(2),
   body.hawk-v2 .hawk-comp-flex-grid .hawk-comp-card:nth-child(5):last-child {
     grid-column: auto !important;
+  }
+}
+
+@media (max-width: 480px) {
+  body.hawk-v2 .hawk-v2-header-container,
+  body.hawk-v2 .hawk-v2-hero-container,
+  body.hawk-v2 .hawk-v2-banner-container,
+  body.hawk-v2 .hawk-v2-footer-container,
+  body.hawk-v2 .hawk-v2-entry-content {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  body.hawk-v2 .hawk-v2-hero-container {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  body.hawk-v2 .job_filters,
+  body.hawk-v2 .pix-contact-form {
+    padding: 20px !important;
+  }
+
+  body.hawk-v2 ul.job_listings li.job_listing > a,
+  body.hawk-v2 .job-listing > a {
+    padding: 18px;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* v0.7 Lighter Futuristic Corporate Security System                  */
+/* ------------------------------------------------------------------ */
+
+body.hawk-v2 {
+  --hawk-canvas: #F7F8F6;
+  --hawk-surface: #FFFFFF;
+  --hawk-surface-muted: #EEF1EE;
+  --hawk-ink: #17212A;
+  --hawk-graphite: #24313B;
+  --hawk-muted: #53616C;
+  --hawk-line: #DCE3DF;
+  --hawk-gold: #E8C64A;
+  --hawk-gold-deep: #B48A20;
+  --hawk-gold-soft: #FCF4D7;
+  --hawk-header-height: 76px;
+  --hawk-radius: 14px;
+  --hawk-shadow: 0 12px 32px rgba(23, 33, 42, 0.08);
+  background: var(--hawk-canvas);
+}
+
+body.hawk-v2 .hawk-v2-header {
+  background: rgba(255, 255, 255, 0.94) !important;
+  border-bottom: 1px solid rgba(23, 33, 42, 0.11) !important;
+  box-shadow: none !important;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+body.hawk-v2.hawk-v2-scrolled .hawk-v2-header {
+  background: rgba(255, 255, 255, 0.98) !important;
+  border-bottom-color: rgba(23, 33, 42, 0.14) !important;
+  box-shadow: 0 10px 28px rgba(23, 33, 42, 0.08) !important;
+}
+
+body.hawk-v2 .hawk-v2-header-container {
+  max-width: 1240px;
+  height: var(--hawk-header-height);
+  gap: 28px;
+}
+
+body.hawk-v2.hawk-v2-scrolled .hawk-v2-header-container {
+  height: 68px;
+}
+
+body.hawk-v2 .hawk-v2-nav-list {
+  gap: 3px;
+}
+
+body.hawk-v2 .hawk-v2-nav-list a {
+  color: #34414A !important;
+  font-family: var(--hawk-font) !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+  padding: 12px 13px !important;
+}
+
+body.hawk-v2 .hawk-v2-nav-list a::after {
+  bottom: 5px;
+  height: 2px;
+  background: var(--hawk-gold-deep);
+}
+
+body.hawk-v2 .hawk-v2-nav-list a:hover,
+body.hawk-v2 .hawk-v2-nav-list a:focus-visible,
+body.hawk-v2 .hawk-v2-nav-list li.current-menu-item > a,
+body.hawk-v2 .hawk-v2-nav-list li.current_page_item > a {
+  color: var(--hawk-ink) !important;
+}
+
+body.hawk-v2 .hawk-v2-logo-img {
+  max-height: 46px;
+}
+
+body.hawk-v2.hawk-v2-scrolled .hawk-v2-logo-img {
+  max-height: 42px;
+}
+
+body.hawk-v2 .hawk-v2-header-quote-btn {
+  min-height: 42px;
+  padding: 10px 17px !important;
+  background: var(--hawk-ink) !important;
+  color: var(--hawk-white) !important;
+  font-size: 11px !important;
+  letter-spacing: 0.055em !important;
+}
+
+body.hawk-v2 .hawk-v2-header-quote-btn:hover,
+body.hawk-v2 .hawk-v2-header-quote-btn:focus-visible {
+  background: var(--hawk-gold) !important;
+  color: var(--hawk-ink) !important;
+}
+
+body.hawk-v2 .hawk-v2-mobile-toggle,
+body.hawk-v2 .hawk-v2-drawer-close {
+  color: var(--hawk-ink);
+}
+
+body.hawk-v2 .hawk-v2-hamburger-inner,
+body.hawk-v2 .hawk-v2-hamburger-inner::before,
+body.hawk-v2 .hawk-v2-hamburger-inner::after {
+  background-color: var(--hawk-ink);
+}
+
+body.hawk-v2 .hawk-v2-drawer-panel {
+  background: var(--hawk-surface);
+  border-left-color: var(--hawk-line);
+}
+
+body.hawk-v2 .hawk-v2-drawer-head {
+  border-bottom-color: var(--hawk-line);
+}
+
+body.hawk-v2 .hawk-v2-drawer-nav-list a {
+  color: var(--hawk-ink) !important;
+  border-bottom-color: var(--hawk-line);
+}
+
+body.hawk-v2 .hawk-v2-drawer-nav-list a:hover,
+body.hawk-v2 .hawk-v2-drawer-nav-list a:focus-visible,
+body.hawk-v2 .hawk-v2-drawer-nav-list li.current-menu-item > a {
+  color: var(--hawk-gold-deep) !important;
+}
+
+body.hawk-v2 .hawk-v2-hero {
+  min-height: clamp(540px, 68svh, 720px);
+  background-position: right center;
+  background-color: var(--hawk-canvas);
+}
+
+body.hawk-v2 .hawk-v2-hero-overlay {
+  background: linear-gradient(90deg, rgba(247, 248, 246, 0.96) 0%, rgba(247, 248, 246, 0.93) 44%, rgba(247, 248, 246, 0.58) 66%, rgba(247, 248, 246, 0.14) 100%) !important;
+}
+
+body.hawk-v2 .hawk-v2-hero-container,
+body.hawk-v2 .hawk-v2-banner-container,
+body.hawk-v2 .hawk-v2-entry-content,
+body.hawk-v2 .hawk-v2-footer-container {
+  max-width: 1240px;
+}
+
+body.hawk-v2 .hawk-v2-hero-container {
+  padding-top: 72px;
+  padding-bottom: 72px;
+}
+
+body.hawk-v2 .hawk-v2-hero-content {
+  max-width: 650px;
+}
+
+body.hawk-v2 .hawk-v2-hero-badge {
+  padding: 8px 13px;
+  background: rgba(255, 255, 255, 0.72);
+  border-color: rgba(180, 138, 32, 0.38);
+  color: var(--hawk-ink);
+  box-shadow: 0 4px 16px rgba(23, 33, 42, 0.05);
+}
+
+body.hawk-v2 .hawk-v2-hero-badge-dot {
+  background: var(--hawk-gold-deep);
+}
+
+body.hawk-v2 .hawk-v2-hero-title {
+  color: var(--hawk-ink) !important;
+  font-size: clamp(2.5rem, 4.4vw, 4.75rem) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.04em !important;
+  line-height: 1.08 !important;
+  max-width: 12ch;
+}
+
+body.hawk-v2 .hawk-v2-hero-desc {
+  color: var(--hawk-muted) !important;
+  font-size: clamp(1rem, 1.22vw, 1.125rem) !important;
+  line-height: 1.7;
+  max-width: 56ch;
+  margin-bottom: 28px;
+}
+
+body.hawk-v2 .hawk-v2-btn,
+body.hawk-v2 .vc_btn3.vc_btn3-color-black,
+body.hawk-v2 .pix-button,
+body.hawk-v2 .wpcf7-submit,
+body.hawk-v2 .form-group button {
+  min-height: 46px;
+  padding: 12px 20px !important;
+  border-radius: 9px !important;
+  background: var(--hawk-ink) !important;
+  color: var(--hawk-white) !important;
+  box-shadow: none !important;
+}
+
+body.hawk-v2 .hawk-v2-btn:hover,
+body.hawk-v2 .hawk-v2-btn:focus-visible,
+body.hawk-v2 .vc_btn3.vc_btn3-color-black:hover,
+body.hawk-v2 .pix-button:hover,
+body.hawk-v2 .wpcf7-submit:hover,
+body.hawk-v2 .form-group button:hover {
+  background: var(--hawk-gold) !important;
+  color: var(--hawk-ink) !important;
+  transform: translateY(-1px);
+}
+
+body.hawk-v2 .hawk-v2-btn-outline,
+body.hawk-v2 .vc_btn3.vc_btn3-style-outline {
+  min-height: 46px;
+  padding: 11px 19px !important;
+  border: 1px solid rgba(23, 33, 42, 0.28) !important;
+  border-radius: 9px !important;
+  background: rgba(255, 255, 255, 0.52) !important;
+  color: var(--hawk-ink) !important;
+}
+
+body.hawk-v2 .hawk-v2-btn-outline:hover,
+body.hawk-v2 .hawk-v2-btn-outline:focus-visible {
+  border-color: var(--hawk-ink) !important;
+  background: var(--hawk-ink) !important;
+  color: var(--hawk-white) !important;
+}
+
+body.hawk-v2 .hawk-v2-page-banner {
+  min-height: 300px;
+  background-position: right center;
+  background-color: var(--hawk-canvas);
+}
+
+body.hawk-v2 .hawk-v2-banner-overlay {
+  background: linear-gradient(90deg, rgba(247, 248, 246, 0.95) 0%, rgba(247, 248, 246, 0.78) 48%, rgba(247, 248, 246, 0.24) 100%) !important;
+}
+
+body.hawk-v2 .hawk-v2-banner-title,
+body.hawk-v2 .hawk-v2-banner-breadcrumbs,
+body.hawk-v2 .hawk-v2-banner-breadcrumbs a,
+body.hawk-v2 .hawk-v2-breadcrumb-current {
+  color: var(--hawk-ink) !important;
+}
+
+body.hawk-v2 .hawk-v2-breadcrumb-sep,
+body.hawk-v2 .hawk-v2-banner-breadcrumbs a:hover {
+  color: var(--hawk-gold-deep) !important;
+}
+
+body.hawk-v2 .hawk-v2-banner-media {
+  position: relative;
+  width: 100%;
+  height: 164px;
+  overflow: hidden;
+  border: 1px solid rgba(23, 33, 42, 0.12);
+  border-radius: var(--hawk-radius);
+  background-color: var(--hawk-surface, #ffffff);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  box-shadow: var(--hawk-shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 24px;
+}
+
+body.hawk-v2 .hawk-v2-banner-logo-img {
+  max-width: 100%;
+  max-height: 120px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+body.hawk-v2 .hawk-v2-inner-content {
+  padding: 48px 0 72px;
+  background: var(--hawk-canvas);
+}
+
+body.hawk-v2 .hawk-v2-home-content,
+body.hawk-v2 .hawk-v2-entry-content {
+  color: var(--hawk-ink);
+}
+
+body.hawk-v2 .hawk-v2-entry-content .wpb_text_column > .wpb_wrapper > p,
+body.hawk-v2 .hawk-v2-home-content .wpb_text_column > .wpb_wrapper > p,
+body.hawk-v2 .hawk-v2-entry-content p,
+body.hawk-v2 .hawk-v2-home-content p {
+  color: var(--hawk-muted) !important;
+  font-size: clamp(1rem, 1.08vw, 1.125rem) !important;
+  line-height: 1.72 !important;
+}
+
+body.hawk-v2 .pix-section-title,
+body.hawk-v2 .hawk-header,
+body.hawk-v2 .hawk-proc-header,
+body.hawk-v2 .hawk-comp-header,
+body.hawk-v2 .hawk-req-header {
+  max-width: 720px;
+  margin-bottom: 28px !important;
+}
+
+body.hawk-v2 .pix-title-h2,
+body.hawk-v2 .hawk-main-title,
+body.hawk-v2 .hawk-proc-title,
+body.hawk-v2 .hawk-aff-title,
+body.hawk-v2 .hawk-clean-title,
+body.hawk-v2 .hawk-comp-title,
+body.hawk-v2 .hawk-req-title {
+  color: var(--hawk-ink) !important;
+  font-family: var(--hawk-display) !important;
+  font-size: clamp(2rem, 3.6vw, 3.35rem) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.035em !important;
+  line-height: 1.1 !important;
+  text-transform: none !important;
+  text-shadow: none !important;
+  -webkit-text-stroke: 0 !important;
+}
+
+body.hawk-v2 .hawk-text-accent,
+body.hawk-v2 .hawk-proc-accent,
+body.hawk-v2 .hawk-text-gold,
+body.hawk-v2 .hawk-comp-accent,
+body.hawk-v2 .hawk-req-accent {
+  color: var(--hawk-gold-deep) !important;
+}
+
+body.hawk-v2 .hawk-services-portal,
+body.hawk-v2 .hawk-process-portal,
+body.hawk-v2 .hawk-affiliates-section,
+body.hawk-v2 .hawk-clean-portal,
+body.hawk-v2 .hawk-competencies-portal,
+body.hawk-v2 .hawk-requirements-portal {
+  min-height: 0 !important;
+  padding: 72px 0 !important;
+  background: transparent !important;
+}
+
+body.hawk-v2 .hawk-services-portal::before,
+body.hawk-v2 .hawk-process-portal::before,
+body.hawk-v2 .hawk-affiliates-section::before,
+body.hawk-v2 .hawk-clean-portal::before,
+body.hawk-v2 .hawk-competencies-portal::before,
+body.hawk-v2 .hawk-requirements-portal::before {
+  opacity: 0.1 !important;
+}
+
+body.hawk-v2 .hawk-flex-grid,
+body.hawk-v2 .hawk-clean-flex-grid,
+body.hawk-v2 .hawk-proc-flex-grid,
+body.hawk-v2 .hawk-comp-flex-grid,
+body.hawk-v2 .hawk-req-flex-grid {
+  gap: 24px !important;
+}
+
+body.hawk-v2 .hawk-card,
+body.hawk-v2 .hawk-clean-card,
+body.hawk-v2 .hawk-proc-link,
+body.hawk-v2 .hawk-aff-card,
+body.hawk-v2 .hawk-comp-card,
+body.hawk-v2 .hawk-req-card {
+  min-width: 0 !important;
+}
+
+body.hawk-v2 .hawk-card-frame,
+body.hawk-v2 .hawk-clean-inner,
+body.hawk-v2 .hawk-proc-inner,
+body.hawk-v2 .hawk-aff-card,
+body.hawk-v2 .hawk-comp-inner,
+body.hawk-v2 .hawk-req-inner {
+  min-height: 0 !important;
+  border: 1px solid var(--hawk-line) !important;
+  border-radius: var(--hawk-radius) !important;
+  background: var(--hawk-surface) !important;
+  box-shadow: 0 6px 22px rgba(23, 33, 42, 0.045) !important;
+}
+
+body.hawk-v2 .hawk-card-frame,
+body.hawk-v2 .hawk-clean-inner,
+body.hawk-v2 .hawk-proc-inner {
+  height: auto !important;
+}
+
+body.hawk-v2 .hawk-card:hover .hawk-card-frame,
+body.hawk-v2 .hawk-clean-card:hover .hawk-clean-inner,
+body.hawk-v2 .hawk-proc-link:hover .hawk-proc-inner,
+body.hawk-v2 .hawk-aff-card:hover,
+body.hawk-v2 .hawk-comp-card:hover .hawk-comp-inner,
+body.hawk-v2 .hawk-req-card:hover .hawk-req-inner {
+  border-color: rgba(180, 138, 32, 0.58) !important;
+  box-shadow: var(--hawk-shadow) !important;
+  transform: translateY(-3px) !important;
+}
+
+body.hawk-v2 .hawk-img-container,
+body.hawk-v2 .hawk-img-box {
+  height: auto !important;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+body.hawk-v2 .hawk-img-container img,
+body.hawk-v2 .hawk-img-box img {
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+body.hawk-v2 .hawk-card-body,
+body.hawk-v2 .hawk-clean-inner > div:last-child,
+body.hawk-v2 .hawk-proc-inner,
+body.hawk-v2 .hawk-aff-info,
+body.hawk-v2 .hawk-comp-inner,
+body.hawk-v2 .hawk-req-inner {
+  padding: 24px !important;
+}
+
+body.hawk-v2 .hawk-card-body h3,
+body.hawk-v2 .hawk-clean-inner h3,
+body.hawk-v2 .hawk-proc-inner h3,
+body.hawk-v2 .hawk-aff-info h3,
+body.hawk-v2 .hawk-comp-inner h3,
+body.hawk-v2 .hawk-req-inner h3 {
+  color: var(--hawk-ink) !important;
+  font-family: var(--hawk-display) !important;
+  font-size: clamp(1.15rem, 1.55vw, 1.4rem) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.025em !important;
+  line-height: 1.25 !important;
+  margin: 0 0 10px !important;
+  text-transform: none !important;
+}
+
+body.hawk-v2 .hawk-card-body p,
+body.hawk-v2 .hawk-clean-inner p,
+body.hawk-v2 .hawk-proc-inner p,
+body.hawk-v2 .hawk-proc-inner li,
+body.hawk-v2 .hawk-aff-info p,
+body.hawk-v2 .hawk-comp-inner p,
+body.hawk-v2 .hawk-req-inner p {
+  color: var(--hawk-muted) !important;
+  font-size: 0.965rem !important;
+  line-height: 1.62 !important;
+}
+
+body.hawk-v2 .hawk-pill,
+body.hawk-v2 .hawk-proc-badge,
+body.hawk-v2 .hawk-alliance-badge,
+body.hawk-v2 .hawk-clean-badge,
+body.hawk-v2 .hawk-comp-badge,
+body.hawk-v2 .hawk-req-badge {
+  color: var(--hawk-ink) !important;
+  background: var(--hawk-gold-soft) !important;
+  border-color: rgba(180, 138, 32, 0.28) !important;
+  font-size: 10px !important;
+  letter-spacing: 0.11em !important;
+}
+
+body.hawk-v2 .vc_custom_1739414921395 {
+  margin-top: 20px !important;
+  padding: 44px 0 !important;
+  background: #EEF3F0 !important;
+}
+
+body.hawk-v2 .vc_custom_1739414921395 .wpb_column {
+  padding: 0 28px !important;
+}
+
+body.hawk-v2 .vc_custom_1739414921395 .pix-title-h2 {
+  font-size: clamp(1.45rem, 2.2vw, 1.9rem) !important;
+}
+
+body.hawk-v2 .vc_custom_1739414921395 p {
+  max-width: 54ch !important;
+}
+
+body.hawk-v2 .pix-contact-form,
+body.hawk-v2 .job_filters {
+  background: var(--hawk-surface) !important;
+  border-color: var(--hawk-line) !important;
+  border-radius: var(--hawk-radius) !important;
+  box-shadow: 0 6px 20px rgba(23, 33, 42, 0.045) !important;
+  padding: 28px !important;
+}
+
+body.hawk-v2 .wpcf7 input[type="text"],
+body.hawk-v2 .wpcf7 input[type="email"],
+body.hawk-v2 .wpcf7 input[type="tel"],
+body.hawk-v2 .wpcf7 select,
+body.hawk-v2 .wpcf7 textarea,
+body.hawk-v2 .pix-site-input,
+body.hawk-v2 .select-custom {
+  min-height: 48px;
+  border-color: #D7E0DA !important;
+  border-radius: 9px !important;
+  background: #FFFFFF !important;
+}
+
+body.hawk-v2 .hawk-v2-footer {
+  padding: 60px 0 24px;
+  background: #18232B;
+  border-top: 1px solid rgba(232, 198, 74, 0.72);
+}
+
+body.hawk-v2 .hawk-v2-footer-grid {
+  gap: 40px;
+  margin-bottom: 44px;
+}
+
+@media (max-width: 1080px) {
+  body.hawk-v2 .hawk-v2-header-container {
+    padding-inline: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  body.hawk-v2 {
+    --hawk-header-height: 68px;
+  }
+
+  body.hawk-v2 .hawk-v2-hero {
+    min-height: 640px;
+    background-position: 68% center;
+  }
+
+  body.hawk-v2 .hawk-v2-hero-overlay {
+    background: linear-gradient(180deg, rgba(247, 248, 246, 0.96) 0%, rgba(247, 248, 246, 0.88) 55%, rgba(247, 248, 246, 0.38) 100%) !important;
+  }
+
+  body.hawk-v2 .hawk-v2-hero-container {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+
+  body.hawk-v2 .hawk-v2-hero-title {
+    max-width: 11ch;
+  }
+
+  body.hawk-v2 .hawk-v2-page-banner {
+    min-height: 250px;
+  }
+
+  body.hawk-v2 .hawk-v2-entry-content,
+  body.hawk-v2 .hawk-v2-hero-container,
+  body.hawk-v2 .hawk-v2-banner-container,
+  body.hawk-v2 .hawk-v2-footer-container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  body.hawk-v2 .hawk-services-portal,
+  body.hawk-v2 .hawk-process-portal,
+  body.hawk-v2 .hawk-affiliates-section,
+  body.hawk-v2 .hawk-clean-portal,
+  body.hawk-v2 .hawk-competencies-portal,
+  body.hawk-v2 .hawk-requirements-portal {
+    padding: 52px 0 !important;
   }
 }
