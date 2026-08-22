@@ -38,7 +38,7 @@ if ( function_exists( 'hawk_get_logo_url' ) ) {
 			</div>
 		</div>
 
-		<div class="hawk-v2-banner-media hawk-v2-banner-logo" style="background-image: url('<?php echo esc_url( $banner_logo_url ); ?>');" aria-hidden="true">
+		<div class="hawk-v2-banner-media hawk-v2-banner-logo">
 			<img src="<?php echo esc_url( $banner_logo_url ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" class="hawk-v2-banner-logo-img" />
 		</div>
 	</div>

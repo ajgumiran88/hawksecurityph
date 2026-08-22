@@ -57,7 +57,7 @@ $checks = array(
 	'hero light overlay treatment'       => array( 'premium_css', 'rgba(247, 248, 246, 0.96)' ),
 	'normal-proportion hero type'        => array( 'premium_css', 'font-size: clamp(2.75rem, 4.2vw, 4rem);' ),
 	'compact card density'               => array( 'premium_css', 'min-height: 0 !important;' ),
-	'premium refactor version'           => array( 'functions', "HAWK_CHILD_VERSION', '1.0.0" ),
+	'premium refactor version'           => array( 'functions', "HAWK_CHILD_VERSION', '1.0.1" ),
 	'personnel filter runs after WPBakery shortcodes' => array( 'functions', "add_filter( 'the_content', 'hawk_enhance_homepage_personnel', 20" ),
 	'personnel showcase template is shipped' => array( 'personnel', 'hawk-personnel-portal' ),
 	'navigation uses solid HAWK navy token' => array( 'fx_css', '--hawk-nav-solid: #17212A;' ),
@@ -143,6 +143,10 @@ foreach ( $forbidden_footer_urls as $url ) {
 
 if ( false !== strpos( $source['hero'], '/wp-content/uploads/2025/02/13.jpg' ) ) {
 	$failures[] = 'replacement guard lineup image remains in homepage hero';
+}
+
+if ( false !== strpos( $source['banner'], 'background-image:' ) && false !== strpos( $source['banner'], 'hawk-v2-banner-logo-img' ) ) {
+	$failures[] = 'banner crest is painted twice (CSS background-image plus img)';
 }
 
 foreach ( array( '#86efac', '#22C55E', '#22c55e' ) as $off_palette_color ) {
